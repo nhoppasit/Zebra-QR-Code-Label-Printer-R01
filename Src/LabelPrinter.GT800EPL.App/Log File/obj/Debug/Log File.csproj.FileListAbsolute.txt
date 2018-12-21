@@ -1,0 +1,21 @@
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\bin\Debug\Log File.dll.config
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\bin\Debug\Log File.dll
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\bin\Debug\Log File.pdb
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\obj\Debug\Log File.csproj.CoreCompileInputs.cache
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\obj\Debug\Log File.dll
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\obj\Debug\Log File.pdb
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_LoadCell_Test_R1\Log File\obj\Debug\Log File.csprojResolveAssemblyReference.cache
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\bin\Debug\Log File.dll.config
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\bin\Debug\Log File.dll
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\bin\Debug\Log File.pdb
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\obj\Debug\Log File.csprojResolveAssemblyReference.cache
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\obj\Debug\Log File.csproj.CoreCompileInputs.cache
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\obj\Debug\Log File.dll
+E:\Work 2018\Wow_repo\rvm2018-01\src\RVM_PLC_Test_R1\Log File\obj\Debug\Log File.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\bin\Debug\Log File.dll.config
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\bin\Debug\Log File.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\bin\Debug\Log File.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\obj\Debug\Log File.csproj.CoreCompileInputs.cache
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\obj\Debug\Log File.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\obj\Debug\Log File.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\Log File\obj\Debug\Log File.csprojResolveAssemblyReference.cache

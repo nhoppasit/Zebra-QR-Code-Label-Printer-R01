@@ -1,0 +1,10 @@
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\bin\Debug\Simple Serial Text.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\bin\Debug\Simple Serial Text.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\bin\Debug\Log File.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\bin\Debug\Log File.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\bin\Debug\Log File.dll.config
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\obj\Debug\Serial Text.csprojResolveAssemblyReference.cache
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\obj\Debug\Serial Text.csproj.CoreCompileInputs.cache
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\obj\Debug\Serial Text.csproj.CopyComplete
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\obj\Debug\Simple Serial Text.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\SimpleSerialText\obj\Debug\Simple Serial Text.pdb

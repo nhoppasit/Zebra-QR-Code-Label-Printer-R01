@@ -1,0 +1,5 @@
+F:\jia_developement\My Code\Log File\bin\Release\Log File.dll.config
+F:\jia_developement\My Code\Log File\bin\Release\Log File.dll
+F:\jia_developement\My Code\Log File\bin\Release\Log File.pdb
+F:\jia_developement\My Code\Log File\obj\x86\Release\Log File.dll
+F:\jia_developement\My Code\Log File\obj\x86\Release\Log File.pdb

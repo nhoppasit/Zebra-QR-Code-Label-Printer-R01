@@ -1,0 +1,22 @@
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk\Log File\bin\Debug\Log File.dll.config
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk\Log File\bin\Debug\Log File.dll
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk\Log File\bin\Debug\Log File.pdb
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk\Log File\obj\x86\Debug\Log File.dll
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk\Log File\obj\x86\Debug\Log File.pdb
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk\Log File\obj\x86\Debug\Log File.csprojResolveAssemblyReference.cache
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk Demo\Log File\bin\Debug\Log File.dll.config
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk Demo\Log File\bin\Debug\Log File.dll
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk Demo\Log File\bin\Debug\Log File.pdb
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.dll
+F:\ROBO\Basket Machine\DEVELOP\SCR\KIOSK\BO23 Kiosk\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.pdb
+D:\DEV\KIOSK\BO23 Kiosk Demo\BO23 Kiosk Demo\Log File\bin\Debug\Log File.dll.config
+D:\DEV\KIOSK\BO23 Kiosk Demo\BO23 Kiosk Demo\Log File\bin\Debug\Log File.dll
+D:\DEV\KIOSK\BO23 Kiosk Demo\BO23 Kiosk Demo\Log File\bin\Debug\Log File.pdb
+D:\DEV\KIOSK\BO23 Kiosk Demo\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.dll
+D:\DEV\KIOSK\BO23 Kiosk Demo\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.pdb
+D:\DEV\KIOSK\BO23 Kiosk Demo\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.csprojResolveAssemblyReference.cache
+D:\DEV\SCR\BHM KIOSK\BO23 Kiosk Demo\Log File\bin\Debug\Log File.dll.config
+D:\DEV\SCR\BHM KIOSK\BO23 Kiosk Demo\Log File\bin\Debug\Log File.dll
+D:\DEV\SCR\BHM KIOSK\BO23 Kiosk Demo\Log File\bin\Debug\Log File.pdb
+D:\DEV\SCR\BHM KIOSK\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.dll
+D:\DEV\SCR\BHM KIOSK\BO23 Kiosk Demo\Log File\obj\x86\Debug\Log File.pdb

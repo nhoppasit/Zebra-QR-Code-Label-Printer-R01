@@ -1,0 +1,23 @@
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\bin\Debug\QRCoder.dll
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\bin\Debug\QRCoder.pdb
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\bin\Debug\UnityEngine.dll
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\obj\Debug\QRCoder.NET40.csprojResolveAssemblyReference.cache
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\obj\Debug\QRCoder.NET40.csproj.CoreCompileInputs.cache
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\obj\Debug\QRCoder.NET40.csproj.CopyComplete
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\obj\Debug\QRCoder.dll
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Library\QRCoder-master\QRCoder\obj\Debug\QRCoder.pdb
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\bin\Debug\QRCoder.dll
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\bin\Debug\QRCoder.pdb
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\bin\Debug\UnityEngine.dll
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\obj\Debug\QRCoder.NET40.csproj.CoreCompileInputs.cache
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\obj\Debug\QRCoder.NET40.csproj.CopyComplete
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\obj\Debug\QRCoder.dll
+E:\Work 2018\Energetic\MIRROR\Scr\QR code for fabrication\Scr\QRCoder-master\QRCoder\obj\Debug\QRCoder.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\bin\Debug\QRCoder.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\bin\Debug\QRCoder.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\bin\Debug\UnityEngine.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.NET40.csproj.CoreCompileInputs.cache
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.NET40.csproj.CopyComplete
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.dll
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.pdb
+E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.NET40.csprojResolveAssemblyReference.cache

@@ -1,0 +1,6 @@
+E:\Work 2018\Wow_repo\rvm2018-01\src\Rvm2018.ScreenApp\SlipPrinter\bin\Release\SlipPrinter.dll
+E:\Work 2018\Wow_repo\rvm2018-01\src\Rvm2018.ScreenApp\SlipPrinter\bin\Release\SlipPrinter.pdb
+E:\Work 2018\Wow_repo\rvm2018-01\src\Rvm2018.ScreenApp\SlipPrinter\obj\Release\SlipPrinter.csprojResolveAssemblyReference.cache
+E:\Work 2018\Wow_repo\rvm2018-01\src\Rvm2018.ScreenApp\SlipPrinter\obj\Release\SlipPrinter.csproj.CoreCompileInputs.cache
+E:\Work 2018\Wow_repo\rvm2018-01\src\Rvm2018.ScreenApp\SlipPrinter\obj\Release\SlipPrinter.dll
+E:\Work 2018\Wow_repo\rvm2018-01\src\Rvm2018.ScreenApp\SlipPrinter\obj\Release\SlipPrinter.pdb

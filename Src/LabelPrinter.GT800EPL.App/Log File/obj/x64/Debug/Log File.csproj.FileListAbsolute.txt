@@ -1,0 +1,5 @@
+D:\DEV\SCR\BHM KIOSK\BHM Kiosk Scr\Cam\Log File\bin\x64\Debug\Log File.dll.config
+D:\DEV\SCR\BHM KIOSK\BHM Kiosk Scr\Cam\Log File\bin\x64\Debug\Log File.dll
+D:\DEV\SCR\BHM KIOSK\BHM Kiosk Scr\Cam\Log File\bin\x64\Debug\Log File.pdb
+D:\DEV\SCR\BHM KIOSK\BHM Kiosk Scr\Cam\Log File\obj\x64\Debug\Log File.dll
+D:\DEV\SCR\BHM KIOSK\BHM Kiosk Scr\Cam\Log File\obj\x64\Debug\Log File.pdb
