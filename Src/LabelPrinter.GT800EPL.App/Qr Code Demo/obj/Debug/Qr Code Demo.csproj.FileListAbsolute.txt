@@ -40,3 +40,24 @@ E:\Work 2018\Energetic\Zebra Label Printer\Src\LabelPrinter.GT800EPL.App\Qr Code
 E:\Work 2018\Energetic\Zebra Label Printer\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\Qr Code Demo.csproj.CopyComplete
 E:\Work 2018\Energetic\Zebra Label Printer\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\LabelPrinter.GT800EPL.Test01App.exe
 E:\Work 2018\Energetic\Zebra Label Printer\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\LabelPrinter.GT800EPL.Test01App.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\LabelPrinter.GT800EPL.Test01App.exe.config
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\LabelPrinter.GT800EPL.Test01App.exe
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\LabelPrinter.GT800EPL.Test01App.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\Log File.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\QRCoder.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\Simple Serial Text.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\SlipPrinter.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\UnityEngine.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\Log File.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\Log File.dll.config
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\QRCoder.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\Simple Serial Text.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\bin\Debug\SlipPrinter.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\Qr Code Demo.csprojResolveAssemblyReference.cache
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\LabelPrinter.GT800EPL.Test01App.frmMain.resources
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\LabelPrinter.GT800EPL.Test01App.Properties.Resources.resources
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\Qr Code Demo.csproj.GenerateResource.cache
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\Qr Code Demo.csproj.CoreCompileInputs.cache
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\Qr Code Demo.csproj.CopyComplete
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\LabelPrinter.GT800EPL.Test01App.exe
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\Qr Code Demo\obj\Debug\LabelPrinter.GT800EPL.Test01App.pdb

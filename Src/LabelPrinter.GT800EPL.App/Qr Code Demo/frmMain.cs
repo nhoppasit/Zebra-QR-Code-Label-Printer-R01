@@ -106,8 +106,7 @@ namespace LabelPrinter.GT800EPL.Test01App
             if(e.KeyChar==(char)Keys.Enter)
                 RenderQrCode(txtBoxQRCode.Text);
         }
-
-
+        
         #region SERIAL INTERFACE & POLLING
 
         string portName = string.Empty;

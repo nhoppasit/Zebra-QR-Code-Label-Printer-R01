@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serial Text", "SimpleSerial
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log File", "Log File\Log File.csproj", "{E2537B7A-2BFD-47B2-B44C-DA2F2C76D526}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serial To QR Code", "Serial To QR Code\Serial To QR Code.csproj", "{4B077FE1-5ACE-466B-8DF5-64E2E397D528}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{E2537B7A-2BFD-47B2-B44C-DA2F2C76D526}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E2537B7A-2BFD-47B2-B44C-DA2F2C76D526}.Release|x86.ActiveCfg = Release|x86
 		{E2537B7A-2BFD-47B2-B44C-DA2F2C76D526}.Release|x86.Build.0 = Release|x86
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B077FE1-5ACE-466B-8DF5-64E2E397D528}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

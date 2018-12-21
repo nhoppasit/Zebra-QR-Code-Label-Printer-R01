@@ -21,3 +21,11 @@ E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test0
 E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.dll
 E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.pdb
 E:\Work 2018\Energetic\Zebra Label Printer\Src\Zebra.LabelPrinter.GT800EPL.Test01App\QRCoder\obj\Debug\QRCoder.NET40.csprojResolveAssemblyReference.cache
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\bin\Debug\QRCoder.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\bin\Debug\QRCoder.pdb
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\bin\Debug\UnityEngine.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\obj\Debug\QRCoder.NET40.csprojResolveAssemblyReference.cache
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\obj\Debug\QRCoder.NET40.csproj.CoreCompileInputs.cache
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\obj\Debug\QRCoder.NET40.csproj.CopyComplete
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\obj\Debug\QRCoder.dll
+D:\git repo\Zebra-QR-Code-Label-Printer-R01\Src\LabelPrinter.GT800EPL.App\QRCoder\obj\Debug\QRCoder.pdb
