@@ -62,7 +62,12 @@ namespace Serial_To_QR_Code
 
             SlipPrinter.PrintProcess.Process(new string[] { txtBoxQRCode.Text, "", "", "", "" });
             try { serialText.Write("Printed.\r\n"); }
-            catch(Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                logText = string.Format("{0} {1}", ex.Message, ex.StackTrace);
+                _Log.AppendText(logText);
+                MessageBox.Show(logText);
+            }
         }
 
         Thread tSerial;
