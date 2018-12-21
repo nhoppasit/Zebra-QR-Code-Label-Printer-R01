@@ -14,6 +14,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zebra.Sdk.Comm;
+using Zebra.Sdk.Printer;
+using Zebra.Sdk.Printer.Discovery;
 
 namespace Serial_To_QR_Code
 {
@@ -56,12 +59,19 @@ namespace Serial_To_QR_Code
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            //System.Threading.Thread t = new System.Threading.Thread(Loop);
-            //t.Start();
-            // Print();
+            Print(txtBoxQRCode.Text);
+        }
 
-            SlipPrinter.PrintProcess.Process(new string[] { txtBoxQRCode.Text, "", "", "", "" });
-            try { serialText.Write("Printed.\r\n"); }
+        void Print(string e)
+        {
+            SlipPrinter.PrintProcess.Process(new string[] { e, "", "", "", "" });
+            try
+            {
+                if (serialText.Port.IsOpen)
+                {
+                    serialText.Write("Printed.\r\n");
+                }
+            }
             catch (Exception ex)
             {
                 logText = string.Format("{0} {1}", ex.Message, ex.StackTrace);
@@ -201,6 +211,72 @@ namespace Serial_To_QR_Code
             RenderQrCode(code);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DiscoveredPrinterDriver printer in UsbDiscoverer.GetZebraDriverPrinters())
+                {
+                    _Log.AppendText(printer.ToString());
+
+                    Connection connection = new DriverPrinterConnection(printer.ToString());
+
+                    try
+                    {
+                        connection.Open();
+                        ZebraPrinter prt = ZebraPrinterFactory.GetInstance(connection);
+
+                        PrinterStatus printerStatus = prt.GetCurrentStatus();
+                        if (printerStatus.isReadyToPrint)
+                        {
+                            _Log.AppendText("Ready To Print");
+                        }
+                        else if (printerStatus.isPaused)
+                        {
+                            _Log.AppendText("Cannot Print because the printer is paused.");
+                        }
+                        else if (printerStatus.isHeadOpen)
+                        {
+                            _Log.AppendText("Cannot Print because the printer head is open.");
+                        }
+                        else if (printerStatus.isPaperOut)
+                        {
+                            _Log.AppendText("Cannot Print because the paper is out.");
+                        }
+                        else
+                        {
+                            _Log.AppendText("Cannot Print.");
+                        }
+                    }
+                    catch (ConnectionException ex)
+                    {
+                        _Log.AppendText(ex.ToString());
+                    }
+                    catch (ZebraPrinterLanguageUnknownException ex)
+                    {
+                        _Log.AppendText(ex.ToString());
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+
+                }
+
+                foreach (DiscoveredUsbPrinter usbPrinter in UsbDiscoverer.GetZebraUsbPrinters(new ZebraPrinterFilter()))
+                {
+                    _Log.AppendText(usbPrinter.ToString());
+                }
+            }
+            catch (ConnectionException ex)
+            {
+                _Log.AppendText($"Error discovering local printers: {ex.Message}");
+            }
+
+            _Log.AppendText("Done discovering local printers.");
+
+        }
+
         void PollingLoop()
         {
             try
@@ -247,11 +323,11 @@ namespace Serial_To_QR_Code
                 {
                     if (Running && !Connecting)
                     {
-                        logText = "Do polling..."; _Log.AppendText(logText);
+                        //logText = "Do polling..."; _Log.AppendText(logText);
 
                         serial_res = serialText.Read();
                         logText = serial_res.Message;
-                        _Log.AppendText(logText);
+                        //_Log.AppendText(logText);
                         if (!serial_res.Success)
                         {
                             if (serial_res.Code != 6 && serial_res.Code != 7)
@@ -261,6 +337,7 @@ namespace Serial_To_QR_Code
                                     Running = false;
                                     tRecon = new Thread(Reconnection); // Fast response() and wait for connection here!
                                     tRecon.Start();
+                                    _Log.AppendText(logText);
                                 }
                             }
                         }
@@ -274,6 +351,7 @@ namespace Serial_To_QR_Code
                                 logText = String.Format(">>> Qr Generated : {0}", str);
                                 _Log.AppendText(logText);
                                 PostResponse(logText);
+                                Print(str);
                             }
                         }
 

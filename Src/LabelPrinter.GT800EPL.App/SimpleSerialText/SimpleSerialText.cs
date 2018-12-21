@@ -75,6 +75,7 @@ namespace SerialText
         #region Class properties
         private object _Lock = new object();
         private SerialPort sp;
+        public SerialPort Port { get { return sp; } }
         private LogFile.Log _Log;
         public string LastBusStatus;
         #endregion

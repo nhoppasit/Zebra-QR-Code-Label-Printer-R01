@@ -16,8 +16,8 @@ namespace SlipPrinter.Template
             bound.Width = 280;
 
             var logoWidth = 50;
-            var logoHeight = 50;
-            var logoLeftMargin = 5;
+            var logoHeight = 30;
+            var logoLeftMargin = 4.5f;
             var logoTopMargin = 5;
 
             g.PageUnit = GraphicsUnit.Millimeter;
