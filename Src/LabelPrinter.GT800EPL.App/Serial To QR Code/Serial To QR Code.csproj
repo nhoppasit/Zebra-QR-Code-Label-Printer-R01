@@ -77,5 +77,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Log File\Log File.csproj">
+      <Project>{e2537b7a-2bfd-47b2-b44c-da2f2c76d526}</Project>
+      <Name>Log File</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QRCoder\QRCoder.NET40.csproj">
+      <Project>{a68dd9ca-828e-4908-8352-0a2b53621f37}</Project>
+      <Name>QRCoder.NET40</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleSerialText\Serial Text.csproj">
+      <Project>{3df9d3f1-90c8-443c-b433-646e9c6fdb45}</Project>
+      <Name>Serial Text</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SlipPrinter\SlipPrinter.csproj">
+      <Project>{2b46c2aa-5cb1-4d98-8f38-0969eefeb1cd}</Project>
+      <Name>SlipPrinter</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

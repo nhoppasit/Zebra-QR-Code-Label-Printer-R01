@@ -14,7 +14,7 @@ namespace SerialText.Utilities
         public object Data { get; set; }
         public override string ToString()
         {
-            return string.Format("CODE-{0}, {1}", Code, Message);
+            return string.Format("CODE={0}, {1}", Code, Message);
         }
     }
 

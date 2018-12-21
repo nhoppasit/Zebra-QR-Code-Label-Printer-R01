@@ -328,6 +328,18 @@ namespace SerialText
             // -->(END)
         }
 
+        public void Write(string text)
+        {
+            try
+            {
+                sp.Write(text);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         protected bool IsPortFound(string portName) { return SerialPort.GetPortNames().Any(n => (n ?? "").ToLower().Equals((portName ?? "").ToLower())); }
     }
 }
