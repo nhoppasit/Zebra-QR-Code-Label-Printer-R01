@@ -20,6 +20,7 @@ namespace SlipPrinter.Template
             var logoLeftMargin = 5;
             var logoTopMargin = 5;
 
+            g.PageUnit = GraphicsUnit.Millimeter;
             g.DrawImage(Bitmap.FromFile(string.Format(@"C:\QR\{0}.jpg", Data.Partner)), logoLeftMargin, logoTopMargin, logoWidth, logoHeight);
 
         }
