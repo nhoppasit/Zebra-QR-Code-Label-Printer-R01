@@ -303,7 +303,7 @@ namespace SerialText
                     if (isExceed && sbList.Count <= 0) return Responses.InvalidInput; // -->(END)
 
                     // Exceed
-                    if (!LRC_OK) return Responses.LrcFailed; // -->(END)
+                    if (!LRC_OK) { var res = Responses.LrcFailed; res.Message = string.Format("LRC failed! [{0}]", pcLRC); return res; }// -->(END)
 
                     // Success received data
                     var response = Responses.Success;

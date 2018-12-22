@@ -67,6 +67,8 @@ namespace Serial_To_QR_Code
             SlipPrinter.PrintProcess.Process(new string[] { e, "", "", "", "" });
             try
             {
+                GetPrinterStatus();
+                if(error_Flag.ReadFailed) GetPrinterStatus();
                 if (serialText.Port.IsOpen)
                 {
                     serialText.Write("Printed.\r\n");
@@ -211,72 +213,6 @@ namespace Serial_To_QR_Code
             RenderQrCode(code);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                foreach (DiscoveredPrinterDriver printer in UsbDiscoverer.GetZebraDriverPrinters())
-                {
-                    _Log.AppendText(printer.ToString());
-
-                    Connection connection = new DriverPrinterConnection(printer.ToString());
-
-                    try
-                    {
-                        connection.Open();
-                        ZebraPrinter prt = ZebraPrinterFactory.GetInstance(connection);
-
-                        PrinterStatus printerStatus = prt.GetCurrentStatus();
-                        if (printerStatus.isReadyToPrint)
-                        {
-                            _Log.AppendText("Ready To Print");
-                        }
-                        else if (printerStatus.isPaused)
-                        {
-                            _Log.AppendText("Cannot Print because the printer is paused.");
-                        }
-                        else if (printerStatus.isHeadOpen)
-                        {
-                            _Log.AppendText("Cannot Print because the printer head is open.");
-                        }
-                        else if (printerStatus.isPaperOut)
-                        {
-                            _Log.AppendText("Cannot Print because the paper is out.");
-                        }
-                        else
-                        {
-                            _Log.AppendText("Cannot Print.");
-                        }
-                    }
-                    catch (ConnectionException ex)
-                    {
-                        _Log.AppendText(ex.ToString());
-                    }
-                    catch (ZebraPrinterLanguageUnknownException ex)
-                    {
-                        _Log.AppendText(ex.ToString());
-                    }
-                    finally
-                    {
-                        connection.Close();
-                    }
-
-                }
-
-                foreach (DiscoveredUsbPrinter usbPrinter in UsbDiscoverer.GetZebraUsbPrinters(new ZebraPrinterFilter()))
-                {
-                    _Log.AppendText(usbPrinter.ToString());
-                }
-            }
-            catch (ConnectionException ex)
-            {
-                _Log.AppendText($"Error discovering local printers: {ex.Message}");
-            }
-
-            _Log.AppendText("Done discovering local printers.");
-
-        }
-
         void PollingLoop()
         {
             try
@@ -340,6 +276,10 @@ namespace Serial_To_QR_Code
                                     _Log.AppendText(logText);
                                 }
                             }
+                            if (serial_res.Code == 7)
+                            {
+                                _Log.AppendText(logText);
+                            }
                         }
                         else // Success
                         {
@@ -377,5 +317,286 @@ namespace Serial_To_QR_Code
 
         #endregion
 
+        public List<DiscoveredPrinter> GetUSBPrinters()
+        {
+            List<DiscoveredPrinter> printerList = new List<DiscoveredPrinter>();
+            try
+            {
+                foreach (DiscoveredUsbPrinter usbPrinter in UsbDiscoverer.GetZebraUsbPrinters())
+                {
+                    printerList.Add(usbPrinter);
+                    _Log.AppendText(usbPrinter.ToString());
+                }
+            }
+            catch (ConnectionException e)
+            {
+                _Log.AppendText($"Error discovering local printers: {e.Message}");
+            }
+
+
+            _Log.AppendText("Done discovering local printers.");
+            return printerList;
+        }
+
+        public void basicPrint(string zpl)
+        {
+            List<DiscoveredPrinter> printerList = GetUSBPrinters();
+            string ZPL_STRING = "^XA^FO50,50^A0N,50,50^FDHello World^FS^XZ";
+
+            if (printerList.Count > 0)
+            {
+                // in this case, we arbitrarily are printing to the first found printer  
+                DiscoveredPrinter discoveredPrinter = printerList[0];
+                Connection connection = discoveredPrinter.GetConnection();
+                connection.Open();
+                connection.Write(Encoding.UTF8.GetBytes(ZPL_STRING));
+            }
+            else
+                _Log.AppendText("No Printers found to print to.");
+        }
+
+        HQES_Error_Flag error_Flag = new HQES_Error_Flag();
+        HQES_Warning_Flag warning_Flag = new HQES_Warning_Flag();
+
+        public void GetPrinterStatus()
+        {
+            List<DiscoveredPrinter> printerList = GetUSBPrinters();
+
+            if (printerList.Count > 0)
+            {
+                // in this case, we arbitrarily are printing to the first found printer  
+                DiscoveredPrinter discoveredPrinter = printerList[0];
+                Connection connection = discoveredPrinter.GetConnection();
+                connection.Open();
+
+                string spaperout = "~HQES";
+
+                string terminator = "\x03";  // hex ETX
+
+                byte[] buffer2 = ASCIIEncoding.ASCII.GetBytes(spaperout);
+
+                byte[] buffer3 = connection.SendAndWaitForResponse(buffer2, 3000, 500, terminator);
+
+                if (0 == buffer3.Length)
+                {
+                    error_Flag.ReadFailed = warning_Flag.ReadFailed = true;
+                    _Log.AppendText("Read printer status failed!");
+                    return;
+                }
+                else
+                {
+                    // -----------------------------------------------------
+                    // Convert buffer
+                    // -----------------------------------------------------
+                    error_Flag.ReadFailed = warning_Flag.ReadFailed = false;
+                    string converted = Encoding.UTF8.GetString(buffer3, 0, buffer3.Length);
+                    _Log.AppendText(converted);
+                    string status = string.Empty;
+                    if (2 != buffer3[0])
+                    {
+                        _Log.AppendText("Read in extra data from some other command!");
+                        string[] astr = converted.Split('\x02');
+                        status = astr[1];
+                    }
+                    else
+                    {
+                        status = converted;
+                    }
+
+                    // -----------------------------------------------------
+                    // Keep error and warning text
+                    // -----------------------------------------------------
+                    string[] lines = status.Split('\n');
+                    string error = string.Empty;
+                    string warning = string.Empty;
+                    foreach (string s in lines)
+                    {
+                        if (s.Contains("ERRORS:"))
+                        {
+                            error = s;
+                        }
+                        if (s.Contains("WARNINGS:"))
+                        {
+                            warning = s;
+                        }
+                    }
+
+                    // -----------------------------------------------------
+                    // Extract Error
+                    // -----------------------------------------------------
+                    error_Flag.Extract(error);
+
+                    // -----------------------------------------------------
+                    // Extract Warning
+                    // -----------------------------------------------------
+                    warning_Flag.Extract(warning);
+                }
+            }
+            else
+            {
+                _Log.AppendText("No Printers found to print to.");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Connection connection = null;
+                foreach (DiscoveredPrinterDriver printer in UsbDiscoverer.GetZebraDriverPrinters())
+                {
+                    _Log.AppendText(printer.ToString());
+
+                    if (connection == null)
+                    {
+                        connection = new DriverPrinterConnection(printer.ToString());
+                        connection.MaxTimeoutForRead = 500;
+                        connection.TimeToWaitForMoreData = 500;
+                    }
+
+                    try
+                    {
+                        if (!connection.Connected)
+                            connection.Open();
+                        ZebraPrinter prt = ZebraPrinterFactory.GetInstance(connection);
+
+                        PrinterStatus printerStatus = prt.GetCurrentStatus();
+                        if (printerStatus.isReadyToPrint)
+                        {
+                            _Log.AppendText("Ready To Print");
+                        }
+                        else if (printerStatus.isPaused)
+                        {
+                            _Log.AppendText("Cannot Print because the printer is paused.");
+                        }
+                        else if (printerStatus.isHeadOpen)
+                        {
+                            _Log.AppendText("Cannot Print because the printer head is open.");
+                        }
+                        else if (printerStatus.isPaperOut)
+                        {
+                            _Log.AppendText("Cannot Print because the paper is out.");
+                        }
+                        else
+                        {
+                            _Log.AppendText("Cannot Print.");
+                        }
+
+                    }
+                    catch (ConnectionException ex)
+                    {
+                        _Log.AppendText(ex.ToString());
+                    }
+                    catch (ZebraPrinterLanguageUnknownException ex)
+                    {
+                        _Log.AppendText(ex.ToString());
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+
+                }
+
+                //foreach (DiscoveredUsbPrinter usbPrinter in UsbDiscoverer.GetZebraUsbPrinters(new ZebraPrinterFilter()))
+                //{
+                //    _Log.AppendText(usbPrinter.ToString());
+                //}
+            }
+            catch (ConnectionException ex)
+            {
+                _Log.AppendText($"Error discovering local printers: {ex.Message}");
+            }
+
+            _Log.AppendText("Done discovering local printers.");
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //basicPrint("test");
+            GetPrinterStatus();
+        }
+
+
+    } // frmMain
+
+    public class HQES_Error_Flag
+    {
+        public bool ReadFailed { get; set; }
+        public bool Flag { get; set; }
+        public String Nibbles16_9 { get; set; }
+        public int Nibble8 { get; set; }
+        public int Nibble7 { get; set; }
+        public int Nibble6 { get; set; }
+        public int Nibble5 { get; set; }
+        public int Nibble4 { get; set; }
+        public int Nibble3 { get; set; }
+        public int Nibble2 { get; set; }
+        public int Nibble1 { get; set; }
+
+        public bool Printhead_Thermistor_Open { get { return (Nibble3 & 0x02) == 0x02; } }
+        public bool Invalid_Firmware_Config { get { return (Nibble3 & 0x01) == 0x01; } }
+
+        public bool Printhead_Detection_Error { get { return (Nibble2 & 0x08) == 0x08; } }
+        public bool Bad_Printhead_Element { get { return (Nibble2 & 0x04) == 0x04; } }
+        public bool Motor_Over_Temperature { get { return (Nibble2 & 0x02) == 0x02; } }
+        public bool Printhead_Over_Temperature { get { return (Nibble2 & 0x01) == 0x01; } }
+
+        public bool Cutter_Fault { get { return (Nibble1 & 0x08) == 0x08; } }
+        public bool Head_Open { get { return (Nibble1 & 0x04) == 0x04; } }
+        public bool Ribbon_Out { get { return (Nibble1 & 0x02) == 0x02; } }
+        public bool Media_Out { get { return (Nibble1 & 0x01) == 0x01; } }
+
+        public void Extract(String e)
+        {
+            string[] astr = e.Split(':');
+            string data = astr[1].TrimStart();
+            Flag = data[0] == '1';
+            Nibbles16_9 = data.Substring(2, 8);
+            Nibble8 = int.Parse(data[11].ToString());
+            Nibble7 = int.Parse(data[12].ToString());
+            Nibble6 = int.Parse(data[13].ToString());
+            Nibble5 = int.Parse(data[14].ToString());
+            Nibble4 = int.Parse(data[15].ToString());
+            Nibble3 = int.Parse(data[16].ToString());
+            Nibble2 = int.Parse(data[17].ToString());
+            Nibble1 = int.Parse(data[18].ToString());
+        }
+    }
+
+    public class HQES_Warning_Flag
+    {
+        public bool ReadFailed { get; set; }
+        public bool Flag { get; set; }
+        public String Nibbles16_9 { get; set; }
+        public int Nibble8 { get; set; }
+        public int Nibble7 { get; set; }
+        public int Nibble6 { get; set; }
+        public int Nibble5 { get; set; }
+        public int Nibble4 { get; set; }
+        public int Nibble3 { get; set; }
+        public int Nibble2 { get; set; }
+        public int Nibble1 { get; set; }
+
+        public bool Replace_Printhead { get { return (Nibble1 & 0x04) == 0x04; } }
+        public bool Clean_Printhead { get { return (Nibble1 & 0x02) == 0x02; } }
+        public bool Need_to_Calibrate_Media { get { return (Nibble1 & 0x01) == 0x01; } }
+
+        public void Extract(String e)
+        {
+            string[] astr = e.Split(':');
+            string data = astr[1].TrimStart();
+            Flag = data[0] == '1';
+            Nibbles16_9 = data.Substring(2, 8);
+            Nibble8 = int.Parse(data[11].ToString());
+            Nibble7 = int.Parse(data[12].ToString());
+            Nibble6 = int.Parse(data[13].ToString());
+            Nibble5 = int.Parse(data[14].ToString());
+            Nibble4 = int.Parse(data[15].ToString());
+            Nibble3 = int.Parse(data[16].ToString());
+            Nibble2 = int.Parse(data[17].ToString());
+            Nibble1 = int.Parse(data[18].ToString());
+        }
     }
 }
