@@ -10,6 +10,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Serial_To_QR_Code
     {
         private delegate void VoidDelegate();
 
-        public void PostResponse(string text)
+        public void PostStatus(string text)
         {
             if (this.InvokeRequired)
             {
@@ -39,6 +40,66 @@ namespace Serial_To_QR_Code
             }
         }
 
+        public void PostPrinterName(string e)
+        {
+            if (lblPrinter.InvokeRequired)
+            {
+                lblPrinter.Invoke(new VoidDelegate(delegate ()
+                {
+                    lblPrinter.Text = e;
+                }));
+            }
+            else
+            {
+                lblPrinter.Text = e;
+            }
+        }
+
+        public void PostPrinterStatus()
+        {
+            if (chkPrinterNotFound.InvokeRequired)
+            {
+                chkPrinterNotFound.Invoke(new VoidDelegate(delegate ()
+                {
+                    if (error_Flag.PrinterNotFound) chkPrinterNotFound.Checked = true;
+                    else chkPrinterNotFound.Checked = false;
+                }));
+            }
+            else
+            {
+                if (error_Flag.PrinterNotFound) chkPrinterNotFound.Checked = true;
+                else chkPrinterNotFound.Checked = false;
+            }
+
+            // Ready
+            if (chkPrinterReady.InvokeRequired)
+            {
+                chkPrinterReady.Invoke(new VoidDelegate(delegate ()
+                {
+                    chkPrinterReady.Checked = !error_Flag.Flag;
+                }));
+            }
+            else
+            {
+                chkPrinterReady.Checked = !error_Flag.Flag;
+            }
+
+            // Head open
+            if (chkPrinterHeadOpen.InvokeRequired)
+            {
+                chkPrinterHeadOpen.Invoke(new VoidDelegate(delegate ()
+                {
+                    if (error_Flag.Head_Open) chkPrinterHeadOpen.Checked = true;
+                    else chkPrinterHeadOpen.Checked = false;
+                }));
+            }
+            else
+            {
+                if (error_Flag.Head_Open) chkPrinterHeadOpen.Checked = true;
+                else chkPrinterHeadOpen.Checked = false;
+            }
+        }
+
         public frmMain()
         {
             InitializeComponent();
@@ -48,6 +109,11 @@ namespace Serial_To_QR_Code
             this.btnPrint.Click += BtnPrint_Click;
             this.txtBoxQRCode.KeyPress += TxtBoxQRCode_KeyPress;
 
+            timerPrinter.Interval = 500;
+            timerPrinter.Enabled = true;
+
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Text = this.Text + " " + version;
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -62,13 +128,14 @@ namespace Serial_To_QR_Code
             Print(txtBoxQRCode.Text);
         }
 
+        volatile bool Printing = false;
         void Print(string e)
         {
             SlipPrinter.PrintProcess.Process(new string[] { e, "", "", "", "" });
             try
             {
                 GetPrinterStatus();
-                if(error_Flag.ReadFailed) GetPrinterStatus();
+                if (error_Flag.ReadFailed) GetPrinterStatus();
                 if (serialText.Port.IsOpen)
                 {
                     serialText.Write("Printed.\r\n");
@@ -286,12 +353,14 @@ namespace Serial_To_QR_Code
                             List<StringBuilder> ret = (List<StringBuilder>)serial_res.Data;
                             foreach (StringBuilder sb in ret)
                             {
+                                Printing = true;
                                 string str = (sb.ToString().Replace(":", "")).Replace("#", "");
                                 GenerateQrCode(str);
                                 logText = String.Format(">>> Qr Generated : {0}", str);
                                 _Log.AppendText(logText);
-                                PostResponse(logText);
+                                PostStatus(logText);
                                 Print(str);
+                                Printing = false;
                             }
                         }
 
@@ -302,7 +371,7 @@ namespace Serial_To_QR_Code
                 /* ----------------------------------------------------------------------------
                  * Exit
                  * ----------------------------------------------------------------------------*/
-                logText = "End the process."; _Log.AppendText(logText); PostResponse(logText);
+                logText = "End the process."; _Log.AppendText(logText); PostStatus(logText);
             }
             catch (Exception ex)
             {
@@ -311,7 +380,7 @@ namespace Serial_To_QR_Code
                  * ----------------------------------------------------------------------------*/
                 logText = "Exceptional stop."; _Log.AppendText(logText);
                 logText = ex.Message; _Log.AppendText(logText);
-                PostResponse(logText);
+                PostStatus(logText);
             }
         }
 
@@ -331,10 +400,11 @@ namespace Serial_To_QR_Code
             catch (ConnectionException e)
             {
                 _Log.AppendText($"Error discovering local printers: {e.Message}");
+                error_Flag.PrinterNotFound = warning_Flag.PrinterNotFound = true;
             }
 
-
             _Log.AppendText("Done discovering local printers.");
+            error_Flag.PrinterNotFound = warning_Flag.PrinterNotFound = false;
             return printerList;
         }
 
@@ -364,10 +434,13 @@ namespace Serial_To_QR_Code
 
             if (printerList.Count > 0)
             {
+                error_Flag.PrinterNotFound = warning_Flag.PrinterNotFound = false;
                 // in this case, we arbitrarily are printing to the first found printer  
                 DiscoveredPrinter discoveredPrinter = printerList[0];
                 Connection connection = discoveredPrinter.GetConnection();
                 connection.Open();
+
+                PostPrinterName(discoveredPrinter.DiscoveryDataMap["MODEL"]);
 
                 string spaperout = "~HQES";
 
@@ -434,6 +507,8 @@ namespace Serial_To_QR_Code
             }
             else
             {
+                error_Flag.PrinterNotFound = warning_Flag.PrinterNotFound = true;
+                error_Flag.Flag = warning_Flag.Flag = true;
                 _Log.AppendText("No Printers found to print to.");
             }
         }
@@ -512,6 +587,17 @@ namespace Serial_To_QR_Code
 
         }
 
+        private void timerPrinter_Tick(object sender, EventArgs e)
+        {
+            timerPrinter.Enabled = false;
+            if (!Printing)
+            {
+                GetPrinterStatus();
+                PostPrinterStatus();
+            }
+            timerPrinter.Enabled = true;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             //basicPrint("test");
@@ -523,6 +609,7 @@ namespace Serial_To_QR_Code
 
     public class HQES_Error_Flag
     {
+        public bool PrinterNotFound { get; set; }
         public bool ReadFailed { get; set; }
         public bool Flag { get; set; }
         public String Nibbles16_9 { get; set; }
@@ -567,6 +654,7 @@ namespace Serial_To_QR_Code
 
     public class HQES_Warning_Flag
     {
+        public bool PrinterNotFound { get; set; }
         public bool ReadFailed { get; set; }
         public bool Flag { get; set; }
         public String Nibbles16_9 { get; set; }
