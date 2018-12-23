@@ -524,13 +524,6 @@ namespace Serial_To_QR_Code
             timerPrinter.Enabled = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //basicPrint("test");
-            GetPrinterStatus();
-        }
-
-
     } // frmMain
 
     public class HQES_Error_Flag
