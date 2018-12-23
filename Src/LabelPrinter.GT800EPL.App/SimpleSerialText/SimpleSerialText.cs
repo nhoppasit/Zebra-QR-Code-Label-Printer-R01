@@ -76,6 +76,7 @@ namespace SerialText
         private object _Lock = new object();
         private SerialPort sp;
         public SerialPort Port { get { return sp; } }
+        public bool PortNotFound { get; private set; }
         private LogFile.Log _Log;
         public string LastBusStatus;
         #endregion
@@ -111,10 +112,12 @@ namespace SerialText
                  * Port name validation
                  * -------------------------------------------------------------*/
                 this.PortName = (this.PortName ?? "").ToUpper();
+                PortNotFound = false;
                 if (!IsPortFound(this.PortName))
                 {
                     Response res = Responses.PortNotFound(this.PortName);
                     _Log.AppendText(res.Message);
+                    PortNotFound = true;
                     return res;
                 }
                 else // มี Port -> เปิดพอร์ต
@@ -158,6 +161,7 @@ namespace SerialText
                 try
                 {
                     sp.Open();
+                    System.Threading.Thread.Sleep(250);
                 }
                 catch (Exception err)
                 {
@@ -185,14 +189,17 @@ namespace SerialText
                 catch (Exception err)
                 {
                     LastBusStatus = "Error closing " + sp.PortName + ": " + err.Message;
+                    _Log.AppendText(LastBusStatus);
                     return false;
                 }
                 LastBusStatus = sp.PortName + " closed successfully";
+                _Log.AppendText(LastBusStatus);
                 return true;
             }
             else
             {
                 LastBusStatus = sp.PortName + " is not open";
+                _Log.AppendText(LastBusStatus);
                 return false;
             }
         }

@@ -38,6 +38,7 @@ namespace Serial_To_QR_Code
         Thread tRecon;
 
         Thread tPolling;
+        volatile bool IsPolling = false;
 
         HQES_Error_Flag error_Flag = new HQES_Error_Flag();
         HQES_Warning_Flag warning_Flag = new HQES_Warning_Flag();
@@ -265,13 +266,13 @@ namespace Serial_To_QR_Code
             {
                 chkSerialNotFound.Invoke(new VoidDelegate(delegate ()
                 {
-                    if (!Running || Connecting) chkSerialNotFound.Checked = true;
+                    if (serialText.PortNotFound) chkSerialNotFound.Checked = true;
                     else chkSerialNotFound.Checked = false;
                 }));
             }
             else
             {
-                if (!Running || Connecting) chkSerialNotFound.Checked = true;
+                if (serialText.PortNotFound) chkSerialNotFound.Checked = true;
                 else chkSerialNotFound.Checked = false;
             }
             #endregion
@@ -315,8 +316,11 @@ namespace Serial_To_QR_Code
             txtWidth.Leave += Txt_Leave;
             txtHeight.Leave += Txt_Leave;
 
-            cboPorts.KeyPress += Txt_KeyPress;
-            cboPorts.Leave += Txt_Leave;
+            cboPorts.KeyPress += Port_KeyPress;
+            cboPorts.Leave += Port_Leave;
+
+            btnStopSerialPolling.Click += BtnStopSerialPolling_Click;
+            btnStartSerialPolling.Click += BtnStartSerialPolling_Click;
 
             timerPrinter.Interval = 1000;
             timerPrinter.Enabled = true;
@@ -329,7 +333,40 @@ namespace Serial_To_QR_Code
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void CboPorts_SelectedIndexChanged(object sender, EventArgs e)
+        private void BtnStartSerialPolling_Click(object sender, EventArgs e)
+        {
+            StartPolling();
+        }
+
+        private void BtnStopSerialPolling_Click(object sender, EventArgs e)
+        {
+            StopPolling();
+            Thread.Sleep(1000);
+        }
+
+        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                SaveSettings();
+        }
+
+        private void Txt_Leave(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void Port_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                SaveSettings();
+                StopPolling();
+                Thread.Sleep(3000);
+                StartPolling();
+            }
+        }
+
+        private void Port_Leave(object sender, EventArgs e)
         {
             SaveSettings();
         }
@@ -409,6 +446,9 @@ namespace Serial_To_QR_Code
             timerPrinter.Enabled = true;
         }
 
+        /// <summary>
+        /// Save settings
+        /// </summary>
         private void SaveSettings()
         {
             Properties.Settings.Default.PortName = cboPorts.Text;
@@ -421,14 +461,17 @@ namespace Serial_To_QR_Code
             Properties.Settings.Default.Upgrade();
         }
 
-
         /// <summary>
         /// Start thread of serial polling
         /// </summary>
         void StartPolling()
         {
-            tPolling = new Thread(PollingLoop);
-            tPolling.Start();
+            if (!IsPolling)
+            {
+                StopFlag = false;
+                tPolling = new Thread(PollingLoop);
+                tPolling.Start();
+            }
         }
 
         /// <summary>
@@ -436,7 +479,8 @@ namespace Serial_To_QR_Code
         /// </summary>
         public void StopPolling()
         {
-            StopFlag = true; logText = "Stop Polling"; _Log.AppendText(logText);
+            StopFlag = true;
+            logText = "Stop Polling"; _Log.AppendText(logText);
         }
 
         /// <summary>
@@ -496,10 +540,13 @@ namespace Serial_To_QR_Code
         {
             try
             {
+                IsPolling = true;
+                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = false; }));
+
                 /* ----------------------------------------------------------------------------
                  * Start
                  * ----------------------------------------------------------------------------*/
-                logText = "Start load cell console meter."; _Log.AppendText(logText);
+                logText = "Start serial port polling."; _Log.AppendText(logText);
                 logText = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"); _Log.AppendText(logText);
 
                 /* ----------------------------------------------------------------------------
@@ -607,16 +654,26 @@ namespace Serial_To_QR_Code
                 /* ----------------------------------------------------------------------------
                  * Exit
                  * ----------------------------------------------------------------------------*/
+                serialText.Close();
                 logText = "End the process."; _Log.AppendText(logText); PostStatus(logText);
+                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = true; }));
+                Running = false;
+                IsPolling = false;
+                PostPortStatus();
             }
             catch (Exception ex)
             {
                 /* ----------------------------------------------------------------------------
                  * Log
                  * ----------------------------------------------------------------------------*/
+                serialText.Close();
                 logText = "Exceptional stop."; _Log.AppendText(logText);
                 logText = ex.Message; _Log.AppendText(logText);
                 PostStatus(logText);
+                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = true; }));
+                Running = false;
+                IsPolling = false;
+                PostPortStatus();
             }
         }
 
@@ -834,17 +891,6 @@ namespace Serial_To_QR_Code
             txtTop.Text = Properties.Settings.Default.CodeTop;
             txtWidth.Text = Properties.Settings.Default.CodeWidth;
             txtHeight.Text = Properties.Settings.Default.CodeHeight;
-        }
-
-        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-                SaveSettings();
-        }
-
-        private void Txt_Leave(object sender, EventArgs e)
-        {
-            SaveSettings();
         }
 
         private void GetSerialPorts()
