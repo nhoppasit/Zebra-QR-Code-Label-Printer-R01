@@ -360,8 +360,18 @@ namespace Serial_To_QR_Code
             if (e.KeyChar == (char)Keys.Enter)
             {
                 SaveSettings();
-                StopPolling();
-                Thread.Sleep(3000);
+                this.Invoke(new VoidDelegate(delegate() { StopPolling(); }));
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                while (IsPolling)
+                {
+                    Thread.Sleep(100);
+                    if(5000<sw.ElapsedMilliseconds)
+                    {
+                        sw.Stop();
+                        return;
+                    }
+                }
                 StartPolling();
             }
         }

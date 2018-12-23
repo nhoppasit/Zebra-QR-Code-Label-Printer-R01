@@ -127,10 +127,18 @@ namespace SerialText
                      * -------------------------------------------------------------*/
                     lock (_Lock)
                     {
-                        this.Open(this.PortName, this.BaudRate, this.DataBits, this.Parity, this.StopBits, this.Handshake);
-                        Response res = Responses.OpenSuccess(this.PortName);
-                        _Log.AppendText(res.Message);
-                        return res;
+                        if (this.Open(this.PortName, this.BaudRate, this.DataBits, this.Parity, this.StopBits, this.Handshake))
+                        {
+                            Response res = Responses.OpenSuccess(this.PortName);
+                            _Log.AppendText(res.Message);
+                            return res;
+                        }
+                        else
+                        {
+                            Response res = Responses.OpenFailed;
+                            _Log.AppendText(res.Message);
+                            return res;
+                        }
                     }
                 }
             }
@@ -160,6 +168,7 @@ namespace SerialText
 
                 try
                 {
+                    //sp.Close();
                     sp.Open();
                     System.Threading.Thread.Sleep(250);
                 }
