@@ -15,4 +15,13 @@ namespace SlipPrinter.Model
         public string Cost { get; set; }
         public string RemainingScore { get; set; }
     }
+
+    public class QrCodeModel
+    {
+        public string QrCode { get; set; }
+        public float Left { get; set; }
+        public float Top { get; set; }
+        public float Width { get; set; }
+        public float Height { get; set; }        
+    }
 }

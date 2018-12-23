@@ -8,19 +8,17 @@ using System.Text;
 
 namespace SlipPrinter
 {
-    public  class PrintProcess
+    public class PrintProcess
     {
         public static void Process(string[] args)
         {
-           
-            var language = (args[3] ?? "").ToLower();
-            var data = new PrintingData()
+            var data = new QrCodeModel()
             {
-                Partner = args[0],
-                Promotion = args[1],
-                Description = args[2],
-                Username = args[3],
-                RemainingScore = args[4],
+                QrCode = args[0],
+                Left = float.Parse(args[1] == "" ? "0" : args[1] ?? "0"),
+                Top = float.Parse(args[2] == "" ? "0" : args[2] ?? "0"),
+                Width = float.Parse(args[3] == "" ? "0" : args[3] ?? "0"),
+                Height = float.Parse(args[4] == "" ? "0" : args[4] ?? "0"),
             };
 
             var printing = new PrintingDoc()
@@ -28,7 +26,6 @@ namespace SlipPrinter
                 Template = new PrintTemplate001()
                 {
                     Data = data,
-                    Language = language
                 },
             };
             printing.Print();

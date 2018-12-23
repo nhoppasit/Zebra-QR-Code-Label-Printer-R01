@@ -59,16 +59,31 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.chkSerialSending = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnStopSerialPolling = new System.Windows.Forms.Button();
+            this.btnStartSerialPolling = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboHeight = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboWidth = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboTop = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboLeft = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkQrCodePrinted = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnGetPorts = new System.Windows.Forms.Button();
+            this.chkSerialReadFault = new System.Windows.Forms.CheckBox();
+            this.chkPrinterStatus = new System.Windows.Forms.CheckBox();
+            this.chkQrCode = new System.Windows.Forms.CheckBox();
+            this.chkSerialNotFound = new System.Windows.Forms.CheckBox();
+            this.chkSerialReady = new System.Windows.Forms.CheckBox();
+            this.cboPorts = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRCode)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -94,7 +109,7 @@
             this.pictureBoxQRCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxQRCode.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxQRCode.Name = "pictureBoxQRCode";
-            this.pictureBoxQRCode.Size = new System.Drawing.Size(817, 476);
+            this.pictureBoxQRCode.Size = new System.Drawing.Size(930, 476);
             this.pictureBoxQRCode.TabIndex = 14;
             this.pictureBoxQRCode.TabStop = false;
             // 
@@ -124,18 +139,19 @@
             this.txtBoxQRCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxQRCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBoxQRCode.Location = new System.Drawing.Point(10, 248);
+            this.txtBoxQRCode.Location = new System.Drawing.Point(10, 291);
             this.txtBoxQRCode.Name = "txtBoxQRCode";
-            this.txtBoxQRCode.Size = new System.Drawing.Size(383, 20);
-            this.txtBoxQRCode.TabIndex = 18;
+            this.txtBoxQRCode.Size = new System.Drawing.Size(270, 20);
+            this.txtBoxQRCode.TabIndex = 4;
             this.txtBoxQRCode.Text = "1234567890";
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(152, 274);
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnPrint.Location = new System.Drawing.Point(152, 317);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(138, 37);
-            this.btnPrint.TabIndex = 17;
+            this.btnPrint.TabIndex = 5;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
@@ -552,134 +568,227 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.chkSerialSending);
+            this.splitContainer3.Panel1.Controls.Add(this.label10);
+            this.splitContainer3.Panel1.Controls.Add(this.label11);
+            this.splitContainer3.Panel1.Controls.Add(this.label9);
+            this.splitContainer3.Panel1.Controls.Add(this.label8);
+            this.splitContainer3.Panel1.Controls.Add(this.btnStopSerialPolling);
+            this.splitContainer3.Panel1.Controls.Add(this.btnStartSerialPolling);
+            this.splitContainer3.Panel1.Controls.Add(this.label6);
+            this.splitContainer3.Panel1.Controls.Add(this.cboHeight);
+            this.splitContainer3.Panel1.Controls.Add(this.label7);
+            this.splitContainer3.Panel1.Controls.Add(this.cboWidth);
+            this.splitContainer3.Panel1.Controls.Add(this.label5);
+            this.splitContainer3.Panel1.Controls.Add(this.cboTop);
+            this.splitContainer3.Panel1.Controls.Add(this.label4);
+            this.splitContainer3.Panel1.Controls.Add(this.cboLeft);
             this.splitContainer3.Panel1.Controls.Add(this.txtBoxQRCode);
             this.splitContainer3.Panel1.Controls.Add(this.label3);
-            this.splitContainer3.Panel1.Controls.Add(this.checkBox6);
+            this.splitContainer3.Panel1.Controls.Add(this.chkQrCodePrinted);
             this.splitContainer3.Panel1.Controls.Add(this.label2);
-            this.splitContainer3.Panel1.Controls.Add(this.button1);
+            this.splitContainer3.Panel1.Controls.Add(this.btnGetPorts);
             this.splitContainer3.Panel1.Controls.Add(this.btnPrint);
-            this.splitContainer3.Panel1.Controls.Add(this.checkBox5);
-            this.splitContainer3.Panel1.Controls.Add(this.checkBox4);
-            this.splitContainer3.Panel1.Controls.Add(this.checkBox3);
-            this.splitContainer3.Panel1.Controls.Add(this.checkBox2);
-            this.splitContainer3.Panel1.Controls.Add(this.checkBox1);
-            this.splitContainer3.Panel1.Controls.Add(this.comboBox1);
+            this.splitContainer3.Panel1.Controls.Add(this.chkSerialReadFault);
+            this.splitContainer3.Panel1.Controls.Add(this.chkPrinterStatus);
+            this.splitContainer3.Panel1.Controls.Add(this.chkQrCode);
+            this.splitContainer3.Panel1.Controls.Add(this.chkSerialNotFound);
+            this.splitContainer3.Panel1.Controls.Add(this.chkSerialReady);
+            this.splitContainer3.Panel1.Controls.Add(this.cboPorts);
             // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pictureBoxQRCode);
             this.splitContainer3.Size = new System.Drawing.Size(1237, 480);
-            this.splitContainer3.SplitterDistance = 412;
+            this.splitContainer3.SplitterDistance = 299;
             this.splitContainer3.TabIndex = 0;
             // 
-            // comboBox1
+            // chkSerialSending
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 47);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(138, 28);
-            this.comboBox1.TabIndex = 0;
+            this.chkSerialSending.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkSerialSending.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkSerialSending.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkSerialSending.FlatAppearance.BorderSize = 2;
+            this.chkSerialSending.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.chkSerialSending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSerialSending.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkSerialSending.Location = new System.Drawing.Point(154, 215);
+            this.chkSerialSending.Name = "chkSerialSending";
+            this.chkSerialSending.Size = new System.Drawing.Size(138, 37);
+            this.chkSerialSending.TabIndex = 9;
+            this.chkSerialSending.Text = "SENDING";
+            this.chkSerialSending.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkSerialSending.UseCompatibleTextRendering = true;
+            this.chkSerialSending.UseVisualStyleBackColor = false;
             // 
-            // checkBox1
+            // label10
             // 
-            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.checkBox1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBox1.FlatAppearance.BorderSize = 2;
-            this.checkBox1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.checkBox1.Location = new System.Drawing.Point(154, 86);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(138, 37);
-            this.checkBox1.TabIndex = 26;
-            this.checkBox1.Text = "READY";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseCompatibleTextRendering = true;
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label10.Location = new System.Drawing.Point(237, 444);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(25, 13);
+            this.label10.TabIndex = 48;
+            this.label10.Text = "mm";
             // 
-            // checkBox2
+            // label11
             // 
-            this.checkBox2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.checkBox2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBox2.FlatAppearance.BorderSize = 2;
-            this.checkBox2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.checkBox2.Location = new System.Drawing.Point(10, 86);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(138, 37);
-            this.checkBox2.TabIndex = 27;
-            this.checkBox2.Text = "NOT FOUND";
-            this.checkBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox2.UseCompatibleTextRendering = true;
-            this.checkBox2.UseVisualStyleBackColor = false;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label11.Location = new System.Drawing.Point(237, 417);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(25, 13);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "mm";
             // 
-            // checkBox3
+            // label9
             // 
-            this.checkBox3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.checkBox3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBox3.FlatAppearance.BorderSize = 2;
-            this.checkBox3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
-            this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.checkBox3.Location = new System.Drawing.Point(10, 129);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(138, 37);
-            this.checkBox3.TabIndex = 28;
-            this.checkBox3.Text = "QR CODE";
-            this.checkBox3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox3.UseCompatibleTextRendering = true;
-            this.checkBox3.UseVisualStyleBackColor = false;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label9.Location = new System.Drawing.Point(237, 390);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(25, 13);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "mm";
             // 
-            // checkBox4
+            // label8
             // 
-            this.checkBox4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox4.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.checkBox4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBox4.FlatAppearance.BorderSize = 2;
-            this.checkBox4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
-            this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.checkBox4.Location = new System.Drawing.Point(154, 129);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(138, 37);
-            this.checkBox4.TabIndex = 29;
-            this.checkBox4.Text = "PRINTER STATUS";
-            this.checkBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox4.UseCompatibleTextRendering = true;
-            this.checkBox4.UseVisualStyleBackColor = false;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label8.Location = new System.Drawing.Point(237, 363);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "mm";
             // 
-            // checkBox5
+            // btnStopSerialPolling
             // 
-            this.checkBox5.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.checkBox5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBox5.FlatAppearance.BorderSize = 2;
-            this.checkBox5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
-            this.checkBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.checkBox5.Location = new System.Drawing.Point(10, 172);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(138, 37);
-            this.checkBox5.TabIndex = 30;
-            this.checkBox5.Text = "READ FAULT";
-            this.checkBox5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox5.UseCompatibleTextRendering = true;
-            this.checkBox5.UseVisualStyleBackColor = false;
+            this.btnStopSerialPolling.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnStopSerialPolling.Location = new System.Drawing.Point(10, 86);
+            this.btnStopSerialPolling.Name = "btnStopSerialPolling";
+            this.btnStopSerialPolling.Size = new System.Drawing.Size(138, 37);
+            this.btnStopSerialPolling.TabIndex = 2;
+            this.btnStopSerialPolling.Text = "STOP";
+            this.btnStopSerialPolling.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnStartSerialPolling
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button1.Location = new System.Drawing.Point(154, 43);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 37);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "RECONNECT";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStartSerialPolling.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnStartSerialPolling.Location = new System.Drawing.Point(154, 86);
+            this.btnStartSerialPolling.Name = "btnStartSerialPolling";
+            this.btnStartSerialPolling.Size = new System.Drawing.Size(138, 37);
+            this.btnStartSerialPolling.TabIndex = 3;
+            this.btnStartSerialPolling.Text = "START";
+            this.btnStartSerialPolling.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label6.Location = new System.Drawing.Point(88, 444);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "HEIGHT:";
+            // 
+            // cboHeight
+            // 
+            this.cboHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboHeight.FormattingEnabled = true;
+            this.cboHeight.Location = new System.Drawing.Point(152, 441);
+            this.cboHeight.Name = "cboHeight";
+            this.cboHeight.Size = new System.Drawing.Size(79, 21);
+            this.cboHeight.TabIndex = 9;
+            this.cboHeight.Text = "20.0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label7.Location = new System.Drawing.Point(93, 417);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 40;
+            this.label7.Text = "WIDTH:";
+            // 
+            // cboWidth
+            // 
+            this.cboWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboWidth.FormattingEnabled = true;
+            this.cboWidth.Location = new System.Drawing.Point(152, 414);
+            this.cboWidth.Name = "cboWidth";
+            this.cboWidth.Size = new System.Drawing.Size(79, 21);
+            this.cboWidth.TabIndex = 8;
+            this.cboWidth.Text = "20.0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label5.Location = new System.Drawing.Point(110, 390);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "TOP:";
+            // 
+            // cboTop
+            // 
+            this.cboTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboTop.FormattingEnabled = true;
+            this.cboTop.Location = new System.Drawing.Point(152, 387);
+            this.cboTop.Name = "cboTop";
+            this.cboTop.Size = new System.Drawing.Size(79, 21);
+            this.cboTop.TabIndex = 7;
+            this.cboTop.Text = "2.0";
+            this.cboTop.SelectedIndexChanged += new System.EventHandler(this.cboTop_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label4.Location = new System.Drawing.Point(105, 363);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "LEFT:";
+            // 
+            // cboLeft
+            // 
+            this.cboLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLeft.FormattingEnabled = true;
+            this.cboLeft.Location = new System.Drawing.Point(152, 360);
+            this.cboLeft.Name = "cboLeft";
+            this.cboLeft.Size = new System.Drawing.Size(79, 21);
+            this.cboLeft.TabIndex = 6;
+            this.cboLeft.Text = "2.0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label3.Location = new System.Drawing.Point(11, 275);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "QR CODE:";
+            // 
+            // chkQrCodePrinted
+            // 
+            this.chkQrCodePrinted.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkQrCodePrinted.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkQrCodePrinted.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkQrCodePrinted.FlatAppearance.BorderSize = 2;
+            this.chkQrCodePrinted.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.chkQrCodePrinted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkQrCodePrinted.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkQrCodePrinted.Location = new System.Drawing.Point(10, 317);
+            this.chkQrCodePrinted.Name = "chkQrCodePrinted";
+            this.chkQrCodePrinted.Size = new System.Drawing.Size(138, 37);
+            this.chkQrCodePrinted.TabIndex = 33;
+            this.chkQrCodePrinted.Text = "PRINTED";
+            this.chkQrCodePrinted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkQrCodePrinted.UseCompatibleTextRendering = true;
+            this.chkQrCodePrinted.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -691,33 +800,115 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "PC SERIAL PORT:";
             // 
-            // checkBox6
+            // btnGetPorts
             // 
-            this.checkBox6.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox6.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.checkBox6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBox6.FlatAppearance.BorderSize = 2;
-            this.checkBox6.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
-            this.checkBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.checkBox6.Location = new System.Drawing.Point(10, 274);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(138, 37);
-            this.checkBox6.TabIndex = 33;
-            this.checkBox6.Text = "PRINTED";
-            this.checkBox6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox6.UseCompatibleTextRendering = true;
-            this.checkBox6.UseVisualStyleBackColor = false;
+            this.btnGetPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnGetPorts.Location = new System.Drawing.Point(154, 43);
+            this.btnGetPorts.Name = "btnGetPorts";
+            this.btnGetPorts.Size = new System.Drawing.Size(138, 37);
+            this.btnGetPorts.TabIndex = 1;
+            this.btnGetPorts.Text = "GET PORTS";
+            this.btnGetPorts.UseVisualStyleBackColor = true;
+            this.btnGetPorts.Click += new System.EventHandler(this.btnGetPorts_Click);
             // 
-            // label3
+            // chkSerialReadFault
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(11, 232);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "QR CODE:";
+            this.chkSerialReadFault.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkSerialReadFault.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkSerialReadFault.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkSerialReadFault.FlatAppearance.BorderSize = 2;
+            this.chkSerialReadFault.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.chkSerialReadFault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSerialReadFault.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkSerialReadFault.Location = new System.Drawing.Point(10, 215);
+            this.chkSerialReadFault.Name = "chkSerialReadFault";
+            this.chkSerialReadFault.Size = new System.Drawing.Size(138, 37);
+            this.chkSerialReadFault.TabIndex = 8;
+            this.chkSerialReadFault.Text = "READ FAULT";
+            this.chkSerialReadFault.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkSerialReadFault.UseCompatibleTextRendering = true;
+            this.chkSerialReadFault.UseVisualStyleBackColor = false;
+            // 
+            // chkPrinterStatus
+            // 
+            this.chkPrinterStatus.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkPrinterStatus.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkPrinterStatus.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkPrinterStatus.FlatAppearance.BorderSize = 2;
+            this.chkPrinterStatus.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.chkPrinterStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPrinterStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPrinterStatus.Location = new System.Drawing.Point(154, 172);
+            this.chkPrinterStatus.Name = "chkPrinterStatus";
+            this.chkPrinterStatus.Size = new System.Drawing.Size(138, 37);
+            this.chkPrinterStatus.TabIndex = 7;
+            this.chkPrinterStatus.Text = "PRINTER STATUS";
+            this.chkPrinterStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkPrinterStatus.UseCompatibleTextRendering = true;
+            this.chkPrinterStatus.UseVisualStyleBackColor = false;
+            // 
+            // chkQrCode
+            // 
+            this.chkQrCode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkQrCode.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkQrCode.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkQrCode.FlatAppearance.BorderSize = 2;
+            this.chkQrCode.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.chkQrCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkQrCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkQrCode.Location = new System.Drawing.Point(10, 172);
+            this.chkQrCode.Name = "chkQrCode";
+            this.chkQrCode.Size = new System.Drawing.Size(138, 37);
+            this.chkQrCode.TabIndex = 6;
+            this.chkQrCode.Text = "QR CODE";
+            this.chkQrCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkQrCode.UseCompatibleTextRendering = true;
+            this.chkQrCode.UseVisualStyleBackColor = false;
+            // 
+            // chkSerialNotFound
+            // 
+            this.chkSerialNotFound.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkSerialNotFound.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkSerialNotFound.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkSerialNotFound.FlatAppearance.BorderSize = 2;
+            this.chkSerialNotFound.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
+            this.chkSerialNotFound.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSerialNotFound.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkSerialNotFound.Location = new System.Drawing.Point(10, 129);
+            this.chkSerialNotFound.Name = "chkSerialNotFound";
+            this.chkSerialNotFound.Size = new System.Drawing.Size(138, 37);
+            this.chkSerialNotFound.TabIndex = 4;
+            this.chkSerialNotFound.Text = "NOT FOUND";
+            this.chkSerialNotFound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkSerialNotFound.UseCompatibleTextRendering = true;
+            this.chkSerialNotFound.UseVisualStyleBackColor = false;
+            // 
+            // chkSerialReady
+            // 
+            this.chkSerialReady.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkSerialReady.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkSerialReady.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkSerialReady.FlatAppearance.BorderSize = 2;
+            this.chkSerialReady.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
+            this.chkSerialReady.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSerialReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkSerialReady.Location = new System.Drawing.Point(154, 129);
+            this.chkSerialReady.Name = "chkSerialReady";
+            this.chkSerialReady.Size = new System.Drawing.Size(138, 37);
+            this.chkSerialReady.TabIndex = 5;
+            this.chkSerialReady.Text = "READY";
+            this.chkSerialReady.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkSerialReady.UseCompatibleTextRendering = true;
+            this.chkSerialReady.UseVisualStyleBackColor = false;
+            // 
+            // cboPorts
+            // 
+            this.cboPorts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPorts.FormattingEnabled = true;
+            this.cboPorts.Location = new System.Drawing.Point(10, 47);
+            this.cboPorts.Name = "cboPorts";
+            this.cboPorts.Size = new System.Drawing.Size(138, 28);
+            this.cboPorts.TabIndex = 0;
             // 
             // frmMain
             // 
@@ -785,16 +976,31 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cboPorts;
+        private System.Windows.Forms.CheckBox chkSerialReadFault;
+        private System.Windows.Forms.CheckBox chkPrinterStatus;
+        private System.Windows.Forms.CheckBox chkQrCode;
+        private System.Windows.Forms.CheckBox chkSerialNotFound;
+        private System.Windows.Forms.CheckBox chkSerialReady;
+        private System.Windows.Forms.Button btnGetPorts;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox chkQrCodePrinted;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboHeight;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboWidth;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboTop;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboLeft;
+        private System.Windows.Forms.Button btnStopSerialPolling;
+        private System.Windows.Forms.Button btnStartSerialPolling;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkSerialSending;
     }
 }
 

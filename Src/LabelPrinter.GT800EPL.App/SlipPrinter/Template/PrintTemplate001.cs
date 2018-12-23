@@ -13,15 +13,14 @@ namespace SlipPrinter.Template
     {
         public override void Print(System.Drawing.Rectangle bound, System.Drawing.Graphics g)
         {
-            bound.Width = 280;
-
-            var logoWidth = 50;
-            var logoHeight = 30;
-            var logoLeftMargin = 4.5f;
-            var logoTopMargin = 5;
-
             g.PageUnit = GraphicsUnit.Millimeter;
-            g.DrawImage(Bitmap.FromFile(string.Format(@"C:\QR\{0}.jpg", Data.Partner)), logoLeftMargin, logoTopMargin, logoWidth, logoHeight);
+
+            var logoWidth = Data.Width;
+            var logoHeight = Data.Height;
+            var logoLeftMargin = Data.Left;
+            var logoTopMargin = Data.Top;
+
+            g.DrawImage(Bitmap.FromFile(string.Format(@"C:\QR\{0}.jpg", Data.QrCode)), logoLeftMargin, logoTopMargin, logoWidth, logoHeight);
 
         }
     }

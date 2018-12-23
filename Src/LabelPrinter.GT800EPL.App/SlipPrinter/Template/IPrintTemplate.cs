@@ -10,8 +10,7 @@ namespace SlipPrinter.Template
 {
     public abstract class IPrintTemplate
     {
-        public string Language { get; set; }
-        public PrintingData Data { get; set; }
+        public QrCodeModel Data { get; set; }
         public abstract void Print(Rectangle bound, Graphics g);
     }
 }

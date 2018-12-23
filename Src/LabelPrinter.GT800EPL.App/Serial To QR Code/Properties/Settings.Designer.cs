@@ -79,5 +79,53 @@ namespace Serial_To_QR_Code.Properties {
                 return ((int)(this["DataBits"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.0")]
+        public string FIXTURE_LEFT {
+            get {
+                return ((string)(this["FIXTURE_LEFT"]));
+            }
+            set {
+                this["FIXTURE_LEFT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.0")]
+        public string FIXTURE_TOP {
+            get {
+                return ((string)(this["FIXTURE_TOP"]));
+            }
+            set {
+                this["FIXTURE_TOP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20.0")]
+        public string FIXTURE_WIDTH {
+            get {
+                return ((string)(this["FIXTURE_WIDTH"]));
+            }
+            set {
+                this["FIXTURE_WIDTH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20.0")]
+        public string FIXTURE_HEIGHT {
+            get {
+                return ((string)(this["FIXTURE_HEIGHT"]));
+            }
+            set {
+                this["FIXTURE_HEIGHT"] = value;
+            }
+        }
     }
 }
