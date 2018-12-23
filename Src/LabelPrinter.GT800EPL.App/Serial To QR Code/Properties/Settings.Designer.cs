@@ -23,18 +23,6 @@ namespace Serial_To_QR_Code.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("COM4")]
-        public string PortName {
-            get {
-                return ((string)(this["PortName"]));
-            }
-            set {
-                this["PortName"] = value;
-            }
-        }
-        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9600")]
@@ -82,49 +70,61 @@ namespace Serial_To_QR_Code.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2.0")]
-        public string FIXTURE_LEFT {
+        [global::System.Configuration.DefaultSettingValueAttribute("COM4")]
+        public string PortName {
             get {
-                return ((string)(this["FIXTURE_LEFT"]));
+                return ((string)(this["PortName"]));
             }
             set {
-                this["FIXTURE_LEFT"] = value;
+                this["PortName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2.0")]
-        public string FIXTURE_TOP {
+        public string FixtureLeft {
             get {
-                return ((string)(this["FIXTURE_TOP"]));
+                return ((string)(this["FixtureLeft"]));
             }
             set {
-                this["FIXTURE_TOP"] = value;
+                this["FixtureLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.0")]
+        public string CodeTop {
+            get {
+                return ((string)(this["CodeTop"]));
+            }
+            set {
+                this["CodeTop"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20.0")]
-        public string FIXTURE_WIDTH {
+        public string CodeWidth {
             get {
-                return ((string)(this["FIXTURE_WIDTH"]));
+                return ((string)(this["CodeWidth"]));
             }
             set {
-                this["FIXTURE_WIDTH"] = value;
+                this["CodeWidth"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20.0")]
-        public string FIXTURE_HEIGHT {
+        public string CodeHeight {
             get {
-                return ((string)(this["FIXTURE_HEIGHT"]));
+                return ((string)(this["CodeHeight"]));
             }
             set {
-                this["FIXTURE_HEIGHT"] = value;
+                this["CodeHeight"] = value;
             }
         }
     }

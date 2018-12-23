@@ -2,21 +2,16 @@
 using SerialText.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Zebra.Sdk.Comm;
-using Zebra.Sdk.Printer;
 using Zebra.Sdk.Printer.Discovery;
 
 namespace Serial_To_QR_Code
@@ -47,7 +42,7 @@ namespace Serial_To_QR_Code
         HQES_Error_Flag error_Flag = new HQES_Error_Flag();
         HQES_Warning_Flag warning_Flag = new HQES_Warning_Flag();
 
-        #region delegate procedures
+        #region Delegate procedures
 
         private delegate void VoidDelegate();
 
@@ -263,6 +258,39 @@ namespace Serial_To_QR_Code
             #endregion
         }
 
+        public void PostPortStatus()
+        {
+            #region Port not found
+            if (chkSerialNotFound.InvokeRequired)
+            {
+                chkSerialNotFound.Invoke(new VoidDelegate(delegate ()
+                {
+                    if (!Running || Connecting) chkSerialNotFound.Checked = true;
+                    else chkSerialNotFound.Checked = false;
+                }));
+            }
+            else
+            {
+                if (!Running || Connecting) chkSerialNotFound.Checked = true;
+                else chkSerialNotFound.Checked = false;
+            }
+            #endregion
+            #region Port ready
+            if (chkSerialReady.InvokeRequired)
+            {
+                chkSerialReady.Invoke(new VoidDelegate(delegate ()
+                {
+                    chkSerialReady.Checked = Running;
+                }));
+            }
+            else
+            {
+                chkSerialReady.Checked = Running;
+            }
+            #endregion
+
+        }
+
         #endregion
 
         /// <summary>
@@ -277,17 +305,18 @@ namespace Serial_To_QR_Code
             this.btnPrint.Click += BtnPrint_Click;
             this.txtBoxQRCode.KeyPress += TxtBoxQRCode_KeyPress;
 
-            cboPorts.TextChanged += Cbo_TextChanged;
-            cboLeft.TextChanged += Cbo_TextChanged;
-            cboTop.TextChanged += Cbo_TextChanged;
-            cboWidth.TextChanged += Cbo_TextChanged;
-            cboHeight.TextChanged += Cbo_TextChanged;
+            txtLeft.KeyPress += Txt_KeyPress;
+            txtTop.KeyPress += Txt_KeyPress;
+            txtWidth.KeyPress += Txt_KeyPress;
+            txtHeight.KeyPress += Txt_KeyPress;
 
-            //cboPorts.SelectedIndexChanged += Cbo_SelectedIndexChanged;
-            //cboLeft.SelectedIndexChanged += Cbo_SelectedIndexChanged;
-            //cboTop.SelectedIndexChanged += Cbo_SelectedIndexChanged;
-            //cboWidth.SelectedIndexChanged += Cbo_SelectedIndexChanged;
-            //cboHeight.SelectedIndexChanged += Cbo_SelectedIndexChanged;
+            txtLeft.Leave += Txt_Leave;
+            txtTop.Leave += Txt_Leave;
+            txtWidth.Leave += Txt_Leave;
+            txtHeight.Leave += Txt_Leave;
+
+            cboPorts.KeyPress += Txt_KeyPress;
+            cboPorts.Leave += Txt_Leave;
 
             timerPrinter.Interval = 1000;
             timerPrinter.Enabled = true;
@@ -300,14 +329,9 @@ namespace Serial_To_QR_Code
             this.WindowState = FormWindowState.Maximized;
         }
 
-        //private void Cbo_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    SaveComboBox();
-        //}
-
-        private void Cbo_TextChanged(object sender, EventArgs e)
+        private void CboPorts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SaveComboBox();
+            SaveSettings();
         }
 
         /// <summary>
@@ -384,18 +408,19 @@ namespace Serial_To_QR_Code
             }
             timerPrinter.Enabled = true;
         }
-        
-        private void SaveComboBox()
+
+        private void SaveSettings()
         {
             Properties.Settings.Default.PortName = cboPorts.Text;
-            Properties.Settings.Default.FIXTURE_LEFT = cboLeft.Text;
-            Properties.Settings.Default.FIXTURE_TOP = cboTop.Text;
-            Properties.Settings.Default.FIXTURE_WIDTH = cboWidth.Text;
-            Properties.Settings.Default.FIXTURE_HEIGHT = cboHeight.Text;
+            Properties.Settings.Default.FixtureLeft = txtLeft.Text;
+            Properties.Settings.Default.CodeTop = txtTop.Text;
+            Properties.Settings.Default.CodeWidth = txtWidth.Text;
+            Properties.Settings.Default.CodeHeight = txtHeight.Text;
 
             Properties.Settings.Default.Save();
+            Properties.Settings.Default.Upgrade();
         }
-        
+
 
         /// <summary>
         /// Start thread of serial polling
@@ -420,6 +445,8 @@ namespace Serial_To_QR_Code
         void Connect()
         {
             Connecting = true;
+
+            serialText.PortName = this.portName = Properties.Settings.Default.PortName;
 
             int Attemps = 10;
 
@@ -509,6 +536,8 @@ namespace Serial_To_QR_Code
                 SerialText.Utilities.Response serial_res;
                 while (!StopFlag)
                 {
+                    PostPortStatus();
+
                     if (Running && !Connecting)
                     {
                         //logText = "Do polling..."; _Log.AppendText(logText);
@@ -544,15 +573,30 @@ namespace Serial_To_QR_Code
                                 // -------------------------------------
                                 // Interprete message
                                 // -------------------------------------
+                                switch (str.Substring(0, 2).ToUpper())
+                                {
+                                    case "QR":
+                                        Printing = true;
+                                        GenerateQrCode(str.Substring(2));
+                                        logText = String.Format(">>> Qr Generated : {0}", str);
+                                        _Log.AppendText(logText);
+                                        PostStatus(logText);
+                                        Print(str);
+                                        Printing = false;
+                                        break;
+                                    default:
+                                        this.chkSerialReadFault.Invoke(new VoidDelegate(delegate ()
+                                        {
+                                            if (!chkSerialReadFault.Checked)
+                                            {
+                                                chkSerialReadFault.Checked = true;
+                                                Thread.Sleep(500);
+                                                chkSerialReadFault.Checked = false;
+                                            }
+                                        }));
+                                        break;
+                                }
 
-                                // QR CODE
-                                Printing = true;
-                                GenerateQrCode(str);
-                                logText = String.Format(">>> Qr Generated : {0}", str);
-                                _Log.AppendText(logText);
-                                PostStatus(logText);
-                                Print(str);
-                                Printing = false;
                             }
                         }
 
@@ -731,7 +775,7 @@ namespace Serial_To_QR_Code
                     string status = string.Empty;
                     if (2 != buffer3[0])
                     {
-                        _Log.AppendText("Read in extra data from some other command!");
+                        //_Log.AppendText("Read in extra data from some other command!");
                         string[] astr = converted.Split('\x02');
                         status = astr[1];
                     }
@@ -786,23 +830,21 @@ namespace Serial_To_QR_Code
         /// </summary>
         private void DefineFixtureItems()
         {
-            cboLeft.Items.Clear();
-            cboTop.Items.Clear();
-            cboWidth.Items.Clear();
-            cboHeight.Items.Clear();
-            for (int i = 0; i <= 20; i++) cboLeft.Items.Add((i * 0.5).ToString());
-            for (int i = 0; i <= 20; i++) cboTop.Items.Add((i * 0.5).ToString());
-            for (int i = 0; i <= 20; i++) cboWidth.Items.Add((i + 10.0).ToString());
-            for (int i = 0; i <= 20; i++) cboHeight.Items.Add((i + 10.0).ToString());
-            cboLeft.Text = Properties.Settings.Default.FIXTURE_LEFT;
-            cboTop.Text = Properties.Settings.Default.FIXTURE_TOP;
-            cboWidth.Text = Properties.Settings.Default.FIXTURE_WIDTH;
-            cboHeight.Text = Properties.Settings.Default.FIXTURE_HEIGHT;
+            txtLeft.Text = Properties.Settings.Default.FixtureLeft;
+            txtTop.Text = Properties.Settings.Default.CodeTop;
+            txtWidth.Text = Properties.Settings.Default.CodeWidth;
+            txtHeight.Text = Properties.Settings.Default.CodeHeight;
         }
 
-        private void cboTop_SelectedIndexChanged(object sender, EventArgs e)
+        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+                SaveSettings();
+        }
 
+        private void Txt_Leave(object sender, EventArgs e)
+        {
+            SaveSettings();
         }
 
         private void GetSerialPorts()

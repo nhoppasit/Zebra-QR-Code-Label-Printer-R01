@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Serial_To_QR_Code.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="PortName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">COM4</Value>
-    </Setting>
     <Setting Name="BaudRate" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">9600</Value>
     </Setting>
@@ -20,16 +17,19 @@
     <Setting Name="DataBits" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">8</Value>
     </Setting>
-    <Setting Name="FIXTURE_LEFT" Type="System.String" Scope="User">
+    <Setting Name="PortName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM4</Value>
+    </Setting>
+    <Setting Name="FixtureLeft" Type="System.String" Scope="User">
       <Value Profile="(Default)">2.0</Value>
     </Setting>
-    <Setting Name="FIXTURE_TOP" Type="System.String" Scope="User">
+    <Setting Name="CodeTop" Type="System.String" Scope="User">
       <Value Profile="(Default)">2.0</Value>
     </Setting>
-    <Setting Name="FIXTURE_WIDTH" Type="System.String" Scope="User">
+    <Setting Name="CodeWidth" Type="System.String" Scope="User">
       <Value Profile="(Default)">20.0</Value>
     </Setting>
-    <Setting Name="FIXTURE_HEIGHT" Type="System.String" Scope="User">
+    <Setting Name="CodeHeight" Type="System.String" Scope="User">
       <Value Profile="(Default)">20.0</Value>
     </Setting>
   </Settings>

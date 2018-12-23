@@ -59,6 +59,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.txtHeight = new System.Windows.Forms.TextBox();
+            this.txtWidth = new System.Windows.Forms.TextBox();
+            this.txtTop = new System.Windows.Forms.TextBox();
+            this.txtLeft = new System.Windows.Forms.TextBox();
             this.chkSerialSending = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,13 +71,9 @@
             this.btnStopSerialPolling = new System.Windows.Forms.Button();
             this.btnStartSerialPolling = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.cboHeight = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cboWidth = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboTop = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cboLeft = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkQrCodePrinted = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -109,7 +109,7 @@
             this.pictureBoxQRCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxQRCode.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxQRCode.Name = "pictureBoxQRCode";
-            this.pictureBoxQRCode.Size = new System.Drawing.Size(930, 476);
+            this.pictureBoxQRCode.Size = new System.Drawing.Size(930, 525);
             this.pictureBoxQRCode.TabIndex = 14;
             this.pictureBoxQRCode.TabStop = false;
             // 
@@ -117,7 +117,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 661);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 727);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1237, 24);
             this.statusStrip1.TabIndex = 16;
@@ -138,17 +138,16 @@
             // 
             this.txtBoxQRCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxQRCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBoxQRCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtBoxQRCode.Location = new System.Drawing.Point(10, 291);
             this.txtBoxQRCode.Name = "txtBoxQRCode";
-            this.txtBoxQRCode.Size = new System.Drawing.Size(270, 20);
+            this.txtBoxQRCode.Size = new System.Drawing.Size(270, 31);
             this.txtBoxQRCode.TabIndex = 4;
-            this.txtBoxQRCode.Text = "1234567890";
             // 
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnPrint.Location = new System.Drawing.Point(152, 317);
+            this.btnPrint.Location = new System.Drawing.Point(152, 328);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(138, 37);
             this.btnPrint.TabIndex = 5;
@@ -303,7 +302,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(605, 84);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(605, 101);
             this.flowLayoutPanel1.TabIndex = 29;
             // 
             // chkInvalid_Firmware_Config
@@ -459,7 +458,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(613, 84);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(613, 101);
             this.flowLayoutPanel2.TabIndex = 30;
             // 
             // chkReplace_Printhead
@@ -532,7 +531,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(1230, 88);
+            this.splitContainer1.Size = new System.Drawing.Size(1230, 105);
             this.splitContainer1.SplitterDistance = 609;
             this.splitContainer1.TabIndex = 31;
             // 
@@ -555,8 +554,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1237, 661);
-            this.splitContainer2.SplitterDistance = 177;
+            this.splitContainer2.Size = new System.Drawing.Size(1237, 727);
+            this.splitContainer2.SplitterDistance = 194;
             this.splitContainer2.TabIndex = 28;
             // 
             // splitContainer3
@@ -568,6 +567,10 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.txtHeight);
+            this.splitContainer3.Panel1.Controls.Add(this.txtWidth);
+            this.splitContainer3.Panel1.Controls.Add(this.txtTop);
+            this.splitContainer3.Panel1.Controls.Add(this.txtLeft);
             this.splitContainer3.Panel1.Controls.Add(this.chkSerialSending);
             this.splitContainer3.Panel1.Controls.Add(this.label10);
             this.splitContainer3.Panel1.Controls.Add(this.label11);
@@ -576,13 +579,9 @@
             this.splitContainer3.Panel1.Controls.Add(this.btnStopSerialPolling);
             this.splitContainer3.Panel1.Controls.Add(this.btnStartSerialPolling);
             this.splitContainer3.Panel1.Controls.Add(this.label6);
-            this.splitContainer3.Panel1.Controls.Add(this.cboHeight);
             this.splitContainer3.Panel1.Controls.Add(this.label7);
-            this.splitContainer3.Panel1.Controls.Add(this.cboWidth);
             this.splitContainer3.Panel1.Controls.Add(this.label5);
-            this.splitContainer3.Panel1.Controls.Add(this.cboTop);
             this.splitContainer3.Panel1.Controls.Add(this.label4);
-            this.splitContainer3.Panel1.Controls.Add(this.cboLeft);
             this.splitContainer3.Panel1.Controls.Add(this.txtBoxQRCode);
             this.splitContainer3.Panel1.Controls.Add(this.label3);
             this.splitContainer3.Panel1.Controls.Add(this.chkQrCodePrinted);
@@ -599,9 +598,41 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pictureBoxQRCode);
-            this.splitContainer3.Size = new System.Drawing.Size(1237, 480);
+            this.splitContainer3.Size = new System.Drawing.Size(1237, 529);
             this.splitContainer3.SplitterDistance = 299;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // txtHeight
+            // 
+            this.txtHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHeight.Location = new System.Drawing.Point(154, 482);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(78, 31);
+            this.txtHeight.TabIndex = 52;
+            // 
+            // txtWidth
+            // 
+            this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtWidth.Location = new System.Drawing.Point(154, 445);
+            this.txtWidth.Name = "txtWidth";
+            this.txtWidth.Size = new System.Drawing.Size(78, 31);
+            this.txtWidth.TabIndex = 51;
+            // 
+            // txtTop
+            // 
+            this.txtTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtTop.Location = new System.Drawing.Point(154, 408);
+            this.txtTop.Name = "txtTop";
+            this.txtTop.Size = new System.Drawing.Size(78, 31);
+            this.txtTop.TabIndex = 50;
+            // 
+            // txtLeft
+            // 
+            this.txtLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtLeft.Location = new System.Drawing.Point(154, 371);
+            this.txtLeft.Name = "txtLeft";
+            this.txtLeft.Size = new System.Drawing.Size(78, 31);
+            this.txtLeft.TabIndex = 49;
             // 
             // chkSerialSending
             // 
@@ -625,7 +656,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label10.Location = new System.Drawing.Point(237, 444);
+            this.label10.Location = new System.Drawing.Point(238, 494);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(25, 13);
             this.label10.TabIndex = 48;
@@ -635,7 +666,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label11.Location = new System.Drawing.Point(237, 417);
+            this.label11.Location = new System.Drawing.Point(238, 457);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(25, 13);
             this.label11.TabIndex = 47;
@@ -645,7 +676,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label9.Location = new System.Drawing.Point(237, 390);
+            this.label9.Location = new System.Drawing.Point(238, 420);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(25, 13);
             this.label9.TabIndex = 46;
@@ -655,7 +686,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label8.Location = new System.Drawing.Point(237, 363);
+            this.label8.Location = new System.Drawing.Point(238, 379);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 45;
@@ -685,82 +716,41 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(88, 444);
+            this.label6.Location = new System.Drawing.Point(90, 494);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 42;
             this.label6.Text = "HEIGHT:";
             // 
-            // cboHeight
-            // 
-            this.cboHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboHeight.FormattingEnabled = true;
-            this.cboHeight.Location = new System.Drawing.Point(152, 441);
-            this.cboHeight.Name = "cboHeight";
-            this.cboHeight.Size = new System.Drawing.Size(79, 21);
-            this.cboHeight.TabIndex = 9;
-            this.cboHeight.Text = "20.0";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label7.Location = new System.Drawing.Point(93, 417);
+            this.label7.Location = new System.Drawing.Point(95, 457);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 40;
             this.label7.Text = "WIDTH:";
             // 
-            // cboWidth
-            // 
-            this.cboWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboWidth.FormattingEnabled = true;
-            this.cboWidth.Location = new System.Drawing.Point(152, 414);
-            this.cboWidth.Name = "cboWidth";
-            this.cboWidth.Size = new System.Drawing.Size(79, 21);
-            this.cboWidth.TabIndex = 8;
-            this.cboWidth.Text = "20.0";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(110, 390);
+            this.label5.Location = new System.Drawing.Point(112, 420);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 38;
             this.label5.Text = "TOP:";
             // 
-            // cboTop
-            // 
-            this.cboTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboTop.FormattingEnabled = true;
-            this.cboTop.Location = new System.Drawing.Point(152, 387);
-            this.cboTop.Name = "cboTop";
-            this.cboTop.Size = new System.Drawing.Size(79, 21);
-            this.cboTop.TabIndex = 7;
-            this.cboTop.Text = "2.0";
-            this.cboTop.SelectedIndexChanged += new System.EventHandler(this.cboTop_SelectedIndexChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(105, 363);
+            this.label4.Location = new System.Drawing.Point(107, 379);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 36;
             this.label4.Text = "LEFT:";
-            // 
-            // cboLeft
-            // 
-            this.cboLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboLeft.FormattingEnabled = true;
-            this.cboLeft.Location = new System.Drawing.Point(152, 360);
-            this.cboLeft.Name = "cboLeft";
-            this.cboLeft.Size = new System.Drawing.Size(79, 21);
-            this.cboLeft.TabIndex = 6;
-            this.cboLeft.Text = "2.0";
             // 
             // label3
             // 
@@ -781,7 +771,7 @@
             this.chkQrCodePrinted.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
             this.chkQrCodePrinted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkQrCodePrinted.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkQrCodePrinted.Location = new System.Drawing.Point(10, 317);
+            this.chkQrCodePrinted.Location = new System.Drawing.Point(10, 328);
             this.chkQrCodePrinted.Name = "chkQrCodePrinted";
             this.chkQrCodePrinted.Size = new System.Drawing.Size(138, 37);
             this.chkQrCodePrinted.TabIndex = 33;
@@ -914,7 +904,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 685);
+            this.ClientSize = new System.Drawing.Size(1237, 751);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.statusStrip1);
             this.DoubleBuffered = true;
@@ -987,13 +977,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkQrCodePrinted;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboHeight;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cboWidth;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboTop;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboLeft;
         private System.Windows.Forms.Button btnStopSerialPolling;
         private System.Windows.Forms.Button btnStartSerialPolling;
         private System.Windows.Forms.Label label10;
@@ -1001,6 +987,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkSerialSending;
+        private System.Windows.Forms.TextBox txtHeight;
+        private System.Windows.Forms.TextBox txtWidth;
+        private System.Windows.Forms.TextBox txtTop;
+        private System.Windows.Forms.TextBox txtLeft;
     }
 }
 
