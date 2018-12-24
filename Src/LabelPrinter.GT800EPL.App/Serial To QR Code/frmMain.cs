@@ -360,18 +360,8 @@ namespace Serial_To_QR_Code
             if (e.KeyChar == (char)Keys.Enter)
             {
                 SaveSettings();
-                this.Invoke(new VoidDelegate(delegate() { StopPolling(); }));
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                while (IsPolling)
-                {
-                    Thread.Sleep(100);
-                    if(5000<sw.ElapsedMilliseconds)
-                    {
-                        sw.Stop();
-                        return;
-                    }
-                }
+                StopPolling();
+                //Thread.Sleep(3000);
                 StartPolling();
             }
         }
@@ -666,7 +656,7 @@ namespace Serial_To_QR_Code
                  * ----------------------------------------------------------------------------*/
                 serialText.Close();
                 logText = "End the process."; _Log.AppendText(logText); PostStatus(logText);
-                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = true; }));
+                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { try { btnStartSerialPolling.Enabled = true; } catch { } }));
                 Running = false;
                 IsPolling = false;
                 PostPortStatus();
@@ -680,7 +670,7 @@ namespace Serial_To_QR_Code
                 logText = "Exceptional stop."; _Log.AppendText(logText);
                 logText = ex.Message; _Log.AppendText(logText);
                 PostStatus(logText);
-                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = true; }));
+                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { try { btnStartSerialPolling.Enabled = true; } catch { } }));
                 Running = false;
                 IsPolling = false;
                 PostPortStatus();
