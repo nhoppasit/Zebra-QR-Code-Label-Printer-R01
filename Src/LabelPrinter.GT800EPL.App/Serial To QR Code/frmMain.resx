@@ -186,40 +186,7 @@
   <metadata name="chkMedia_Out.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="chkInvalid_Firmware_Config.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkPrinthead_Detection_Error.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkBad_Printhead_Element.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkMotor_Over_Temperature.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkPrinthead_Over_Temperature.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkCutter_Fault.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkRibbon_Out.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkMedia_Out.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="flowLayoutPanel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkReplace_Printhead.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkClean_Printhead.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkNeed_to_Calibrate_Media.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="chkReplace_Printhead.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -240,6 +207,21 @@
   <metadata name="splitContainer3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="textBox2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="chkSerialOpenFailed.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="txtHeight.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -250,9 +232,6 @@
     <value>True</value>
   </metadata>
   <metadata name="txtLeft.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="chkSerialSending.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="label10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -318,4 +297,64 @@
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAGACoDAAAFgAAACgAAAAgAAAAQAAAAAEAGAAAAAAAgAwAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QuI+RfZAQ/VBQPVCPfVDOvVFOPRGNfRHM/RJMPNKLvNLLPNM
+        KvNOKfJPKPJQJ/JRJvBLItwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4Uvc6T/Y7TPY8
+        SfY+R/Y/RPVAQfVCPvVDPPVEOfRFN/RHNPRIMvRJL/NKLfNMK/NNKfNOKPJPJ/JRJvJSJvJTJvFTJvFT
+        JvEAAAAAAAAAAAAAAAAAAAAAAAAAAAA2Vvc3U/c5UPc6TvY8S/Y9SPY+RfY/Q/VBQPVCPfVDOvVFOPRG
+        NfRHM/RIMfNKLvNLLPNMKvNNKfJPKPJQJ/JRJvJSJvFTJvFTJvFTJvEAAAAAAAAAAAAAAAAAAAA0Wvc1
+        V/c3Vfc4Uvc5T/Y7TPY8SfY+R/Y/RPVAQfVBPvVDPPVEOfRFN/RHNPRIMvRJL/NKLfNMK/NNKfNOKPJP
+        J/JRJ/JSJvJTJvFTJvFTJvFTJvEAAAAAAAAAAAAyXvgzW/g1Wfc2Vvc3U/c5UPc6TfY8S/Y9SPY+RfY/
+        QvVBQPVCPfVDOvVFOPRGNfRHM/RJMfNKLvNLLPNMKvNNKfJPKPJQJ/JRJvJSJvFTJvFTJvFTJvFTJvEA
+        AAAAAAAxYPgzXfg0Wvc1V/dWb/ijrvulrvulrfqmrPqmqvqnqfpwcfdIRfWfnPmqpPqknPlSQPRIMvRJ
+        L/NKLfNMK/NNKvOYgvevnPmumvhtSPNTJvFTJvFTJvFTJvEAAAAAAAAwYfgyXvgzW/c1Wferufv/////
+        ///////////////////T0/x2dvfc2/yKhfjT0fyJffdHM/RIMPNKLvNLLPNbPPPy7/2Te/a9rvm3pPhS
+        JvFTJvFTJvFTJvEAAAAqXOIwYvgxX/gzXfg0Wvetu/v////////////////////////V1vx4efi5uPtD
+        PPWsp/qKgfhHNPRIMvRJL/NKLfNcP/Th2/xOKPKJbva5p/lSJvFTJvFTJvFTJvFMIt0tZvcvZPgwYfgy
+        XvgzW/itvPz////////////////////////Bw/tmaff19f7V0/zz8/53bvdGNfRcSvWEc/eEcvZvVvXz
+        8f3Z0fzr5/2nkvhRJvJSJvJTJvFTJvFTJvItaPkuZfgwYvgxYPgzXfitvPz///////////9vf/hXZvdY
+        ZPdDTPY/RPVUVfVdW/ZYUvZEOfRFN/TOyvvIwfu/tvrm4vxZO/NnSPRmRfNRKfJRJvJSJvJSJvFTJvFT
+        JvIsafktZvkvZPgwYfgyXvisvfz///////////9LYPdCVPbr7f3Aw/s+RfZAQ/VBQPXo6P3NyvtFOPTW
+        0/xhT/VNNfTs6v1LLPNMKvNNKfJPKPJQJ/JRJvJSJvJTJvFTJvIravktaPkuZfgwYvgxYPirvfz/////
+        //////9KYfdBVvbn6f29wfs9R/ZITfVMTfXk5P3KyPtEOfTPzPvCu/u4r/rn4/xKLfNMK/NNKfJOKPJP
+        J/JRJvJSJvJTJvFTJvErbPksafkuZvgvZPgwYfh0kvrb4/3d4/3Ezvw7Vvc5UPc6TfY8S/Y9SPbc3fz6
+        +v5BQPVCPfVDOvReU/WJfveKffdpVfVKLvNLLPNMKvNOKfJPKPJQJ/JRJvJSJvJTJvEqbfkravktaPku
+        ZfgwYvgxYPgyXfg0Wvc1V/c3VPc4Uvc5T/Y7TPY8Sfavs/rGyPxmZvZgXfZDPPVEOfRkV/VqW/VIMvRJ
+        L/NKLfNMK/NNKvJOKPJPJ/JRJvJSJvJTJvEpbvkrbPksafktZvgvZPhtj/nS3P3U3P27x/w5WPc9WPfP
+        1fyqsvs7S/Y9SPY+Rfb+/v7g4PxCPfVDOvTj4vz5+f1INPRIMPNlTvTY0fyYhPdNKfJPJ/JQJ/JRJvJS
+        JvEocPkqbfkravktaPkuZfiqv/yQqfpQdPjo7P1IZvhAXPf7/P7N0vw7TPY8SfY9R/apq/qXmPlBPvVD
+        PPWblvmqo/lHNPRIMvRwXPX+/v6xovlNKfJOKPJPJ/JRJvJSJvIocfkpbvkrbPksafkuZvmqwPyBnvo5
+        ZPjk6f1HaPg2Vvc/Wvdecffz9P6lrPo9SPY+RfZHSvWcnPl5dfdDO/RFOPRRQvTw7/3BufpSOPNNL/NM
+        KvNOKfJPKPJQJ/JRJvIncvoocPkqbfkravktaPl5nPro7f7q7v7Q2vw5Xvc1V/c3VPdWbPfp6/6fp/o8
+        SfY+R/ZcYff////DwvtDPPVEOfRQQvTn5f26svpJL/NKLfNMK/NNKfNOKPJPJ/JRJvImdPoocfkpb/kr
+        bPksafktZvkvZPgxYfgyXvgzW/g1Wfc2Vvc3U/c5UPc6TvY8S/axtvuipfp/gviCgvi9u/t7dPdFOPRG
+        NfRHM/RIMPNKLvNLLPNMKvNNKfJPKPJQJ/Ildfonc/oocPkqbfkravljj/rF1P3G1P3H0/3H0/3I0vzI
+        0fyElvk4Uvc5T/Y7TPb9/f7f4Pw/RPV5evf///+lovlGO/S1r/rNx/zMxft4ZfZKLfNMK/NNKvNOKPJP
+        J/IldvomdPoocfkpb/krbPmpwvz////////////////////////S2f03U/c5UPc6TvZZZvdmbvfX2P2k
+        pfplZPZOSfVUTPX///////////+1qvpKLvNLLPNMKvNNKfJPKPIkePoldfonc/oocPkqbfmpw/z///+a
+        tPtIdfhJcvh7lvr////T2v03VPc4Uvc5T/Y7TPZUYPb9/f67vftAQfVBPvVUTvX///////////+1rPpJ
+        L/NKLfNMK/NNKfNOKPIjefokd/omdPoncfkpbvmpxPz///9hjPrK1/zs8P1Bavj////T2v02Vvc5VPdA
+        V/dCVPY9TPZDTvZCSfZHSvVIR/VjX/b///////////+1rPpIMPNKLvNLLPNMKvNOKfIie/okePoldfon
+        c/oocPmpxPz///9hjfq8zvzc5P1Ba/j////T2v01V/fAyfzv8f7v8f7Bxvs8Sfa2uvv+/v7/////////
+        //////////+1rfpIMvRJL/NKLfNMK/NMKfEAAAAjefokd/omdPoocfmoxfz///+lv/tWhPpXgvmIpPr/
+        ///S2/01Wfff5P1LZPdMYffg4/08S/bU1/z///////////////////////+0rfpHM/RJMPNKLvNLLPNF
+        J90AAAAie/okePoldfonc/qnxPz////////////////////////R2v00Wvfe5P2ClPmDk/nf4v07TPbT
+        1vz///////////////////////+zrfpHNPRIMvRJL/NKLfMAAAAAAAAhfPojefokd/omdPpWkPqyy/y0
+        y/y1yvy1yfy2yfy2x/x1k/ozW/h/lvm4xPy5w/yCkPk6TfZ8hvi7v/u7vvu8vfu8vPu9u/u8ufttY/ZG
+        NfRHM/RIMPNKLvMAAAAAAAAgffsie/okePoldfonc/oocPkqbfkravktaPkuZfgwYvgxYPgzXfg0Wvc1
+        V/c3VPc4Uvc6T/Y7TPY8SfY9R/Y/RPVAQfVCPvVDPPVEOfRFN/RHNPRIMvRJL/MAAAAAAAAAAAAhfPoj
+        efold/omdPoocfkpb/krbPksafkuZvgvZPgxYfgyXvgzW/g1Wfc2Vvc3U/c5UPc6TvY8S/Y9SPY+RfZA
+        Q/VBQPVCPfVDOvVFOPRGNfRHM/QAAAAAAAAAAAAAAAAAAAAie/okePoldfonc/oocPkqbfkra/ktaPku
+        ZfgwYvgxX/gzXfg0Wvc1V/c3VPc4Uvc5T/Y7TPY8SfY+R/Y/RPVAQfVCPvVDPPVEOfRFNvQAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAjefokd/omdPoocfkpbvkrbPksafktZvgvZPgwYfgyXvgzW/g1Wfc2Vvc4U/c5
+        UPY6TfY7S/Y9SPY+RfZAQvVBQPVCPfVDOvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAob/cqbfkravktaPkuZfgwYvgxX/gzXfg0Wvc1V/c3VPc4Uvc6T/Y7TPY8SfY+R/YAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD+AAB/8AAAD+AAAAfAAAADgAAAAYAAAAGAAAABAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAYAA
+        AAGAAAABwAAAA+AAAAfwAAAP/wAA/w==
+</value>
+  </data>
 </root>

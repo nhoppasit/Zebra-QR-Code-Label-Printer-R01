@@ -43,6 +43,10 @@ namespace Serial_To_QR_Code
         HQES_Error_Flag error_Flag = new HQES_Error_Flag();
         HQES_Warning_Flag warning_Flag = new HQES_Warning_Flag();
 
+        int PrinterNotFoundTicks = 0;
+        int SerialOpenFaultTicks = 0;
+        bool ForceClose = false;
+
         #region Delegate procedures
 
         private delegate void VoidDelegate();
@@ -329,7 +333,7 @@ namespace Serial_To_QR_Code
             DefineFixtureItems();
 
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            this.Text = this.Text + " " + version;
+            this.Text = string.Format("{0} (Version {1})", "Serial to QR Code", version);
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -379,7 +383,16 @@ namespace Serial_To_QR_Code
         private void TxtBoxQRCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
-                RenderQrCode(txtBoxQRCode.Text);
+            {
+                //RenderQrCode(txtBoxQRCode.Text);
+
+                GenerateQrCode(txtBoxQRCode.Text);
+                logText = String.Format(">>> Qr Generated : {0}", txtBoxQRCode.Text);
+                _Log.AppendText(logText);
+                PostStatus(logText);
+                Print(txtBoxQRCode.Text);
+                Printing = false;
+            }
         }
 
         /// <summary>
@@ -389,7 +402,14 @@ namespace Serial_To_QR_Code
         /// <param name="e"></param>
         private void BtnPrint_Click(object sender, EventArgs e)
         {
+            //Print(txtBoxQRCode.Text);
+
+            GenerateQrCode(txtBoxQRCode.Text);
+            logText = String.Format(">>> Qr Generated : {0}", txtBoxQRCode.Text);
+            _Log.AppendText(logText);
+            PostStatus(logText);
             Print(txtBoxQRCode.Text);
+            Printing = false;
         }
 
         /// <summary>
@@ -409,14 +429,21 @@ namespace Serial_To_QR_Code
         /// <param name="e"></param>
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult ret = MessageBox.Show("Do you want to exit?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (ret == DialogResult.Yes)
+            if (!ForceClose)
             {
-                StopFlag = true;
+                DialogResult ret = MessageBox.Show("Do you want to exit?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (ret == DialogResult.Yes)
+                {
+                    StopFlag = true;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
             else
             {
-                e.Cancel = true;
+                StopFlag = true;
             }
         }
 
@@ -479,6 +506,7 @@ namespace Serial_To_QR_Code
         /// </summary>
         public void StopPolling()
         {
+            if (!StopFlag) btnStopSerialPolling.Invoke(new VoidDelegate(delegate () { btnStopSerialPolling.Enabled = false; }));
             StopFlag = true;
             logText = "Stop Polling"; _Log.AppendText(logText);
         }
@@ -500,22 +528,52 @@ namespace Serial_To_QR_Code
                 //logText = serial_res.Message; _Log.AppendText(logText);
                 if (serial_res.Success)
                 {
+                    SerialOpenFaultTicks = 0;
+                    chkSerialOpenFailed.BeginInvoke(new VoidDelegate(delegate ()
+                    {
+                        chkSerialOpenFailed.Checked = false;
+                    }));
                     Connecting = false;
                     Running = true;
                     return;
                 }
-
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                while (sw.ElapsedMilliseconds < 300)
+                else
                 {
-                    if (StopFlag)
+                    SerialOpenFaultTicks++;
+                    if (60 < SerialOpenFaultTicks)
                     {
-                        Connecting = false;
-                        return;
+                        StopFlag = true;
+                        MessageBox.Show("The application cannot longer wait serial port connection. The application will exit.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        try
+                        {
+                            tPolling.Abort();
+                        }
+                        catch { }
+                        ForceClose = true;
+                        Application.Exit();
                     }
-                    Thread.Sleep(20);
+                    try
+                    {
+                        chkSerialOpenFailed.Invoke(new VoidDelegate(delegate ()
+                        {
+                            if (!chkSerialOpenFailed.Checked)
+                            {
+                                chkSerialOpenFailed.Checked = true;
+                                Thread.Sleep(500);
+                                chkSerialOpenFailed.Checked = false;
+                            }
+                        }));
+                    }
+                    catch { }
                 }
+
+                if (StopFlag)
+                {
+                    Connecting = false;
+                    return;
+                }
+
+                Thread.Sleep(500);
             }
             Connecting = false;
         }
@@ -608,6 +666,7 @@ namespace Serial_To_QR_Code
                             if (serial_res.Code == 7) // LrcFailed
                             {
                                 _Log.AppendText(logText);
+                                PostStatus(logText);
                             }
                         }
                         else // Success
@@ -624,14 +683,59 @@ namespace Serial_To_QR_Code
                                 {
                                     case "QR":
                                         Printing = true;
-                                        GenerateQrCode(str.Substring(2));
-                                        logText = String.Format(">>> Qr Generated : {0}", str);
-                                        _Log.AppendText(logText);
-                                        PostStatus(logText);
-                                        Print(str);
-                                        Printing = false;
+                                        this.chkQrCode.Invoke(new VoidDelegate(delegate ()
+                                        {
+                                            if (!chkQrCode.Checked)
+                                            {
+                                                chkQrCode.Checked = true;
+                                                Thread.Sleep(500);
+                                                chkQrCode.Checked = false;
+                                            }
+                                        }));
+                                        if (!error_Flag.Flag)
+                                        {
+                                            GenerateQrCode(str.Substring(2));
+                                            logText = String.Format(">>> Qr Generated : {0}", str);
+                                            _Log.AppendText(logText);
+                                            PostStatus(logText);
+                                            Print(str.Substring(2));
+                                            Printing = false;
+                                        }
+                                        else
+                                        {
+                                            if (serialText.Port.IsOpen)
+                                            {
+                                                string ErrorSring = "E";
+                                                ErrorSring += error_Flag.PrinterNotFound ? "1" : "0";
+                                                ErrorSring += error_Flag.Bad_Printhead_Element ? "1" : "0";
+                                                ErrorSring += error_Flag.Cutter_Fault ? "1" : "0";
+                                                ErrorSring += error_Flag.Head_Open ? "1" : "0";
+                                                ErrorSring += error_Flag.Invalid_Firmware_Config ? "1" : "0";
+                                                ErrorSring += error_Flag.Media_Out ? "1" : "0";
+                                                ErrorSring += error_Flag.Motor_Over_Temperature ? "1" : "0";
+                                                ErrorSring += error_Flag.Printhead_Detection_Error ? "1" : "0";
+                                                ErrorSring += error_Flag.Printhead_Over_Temperature ? "1" : "0";
+                                                ErrorSring += error_Flag.Printhead_Thermistor_Open ? "1" : "0";
+                                                ErrorSring += error_Flag.ReadFailed ? "1" : "0";
+                                                ErrorSring += error_Flag.Ribbon_Out ? "1" : "0";
+                                                serialText.Write(string.Format("{0}\r\n", ErrorSring));
+                                            }
+                                        }
+                                        break;
+                                    case "PS":
+
+                                        this.chkPrinterStatus.Invoke(new VoidDelegate(delegate ()
+                                        {
+                                            if (!chkPrinterStatus.Checked)
+                                            {
+                                                chkPrinterStatus.Checked = true;
+                                                Thread.Sleep(500);
+                                                chkPrinterStatus.Checked = false;
+                                            }
+                                        }));
                                         break;
                                     default:
+                                        PostStatus("Read fault!");
                                         this.chkSerialReadFault.Invoke(new VoidDelegate(delegate ()
                                         {
                                             if (!chkSerialReadFault.Checked)
@@ -655,11 +759,12 @@ namespace Serial_To_QR_Code
                  * Exit
                  * ----------------------------------------------------------------------------*/
                 serialText.Close();
-                logText = "End the process."; _Log.AppendText(logText); PostStatus(logText);
-                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { try { btnStartSerialPolling.Enabled = true; } catch { } }));
-                Running = false;
-                IsPolling = false;
-                PostPortStatus();
+                logText = "End the process."; _Log.AppendText(logText);
+                PostStatus(logText);
+                //btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { try { btnStartSerialPolling.Enabled = true; } catch { } }));
+                //Running = false;
+                //IsPolling = false;
+                //PostPortStatus();
             }
             catch (Exception ex)
             {
@@ -670,11 +775,16 @@ namespace Serial_To_QR_Code
                 logText = "Exceptional stop."; _Log.AppendText(logText);
                 logText = ex.Message; _Log.AppendText(logText);
                 PostStatus(logText);
-                btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { try { btnStartSerialPolling.Enabled = true; } catch { } }));
-                Running = false;
-                IsPolling = false;
-                PostPortStatus();
+                //try { btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = true; })); } catch { }
+                //Running = false;
+                //IsPolling = false;
+                //PostPortStatus();
             }
+            try { btnStartSerialPolling.Invoke(new VoidDelegate(delegate () { btnStartSerialPolling.Enabled = true; })); } catch { }
+            Running = false;
+            IsPolling = false;
+            PostPortStatus();
+            try { btnStopSerialPolling.Invoke(new VoidDelegate(delegate () { btnStopSerialPolling.Enabled = true; })); } catch { }
         }
 
         /// <summary>
@@ -699,6 +809,7 @@ namespace Serial_To_QR_Code
                                 this.pictureBoxQRCode.SizeMode = PictureBoxSizeMode.CenterImage;
                                 pictureBoxQRCode.SizeMode = PictureBoxSizeMode.StretchImage;
                                 string file = string.Format(@"C:\QR\{0}.jpg", e);
+
                                 // Save
                                 using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
                                 {
@@ -736,7 +847,8 @@ namespace Serial_To_QR_Code
         /// <param name="e"></param>
         void Print(string e)
         {
-            SlipPrinter.PrintProcess.Process(new string[] { e, "", "", "", "" });
+            if (e.Equals(String.Empty)) return;
+            SlipPrinter.PrintProcess.Process(new string[] { e, txtLeft.Text, txtTop.Text, txtWidth.Text, txtHeight.Text });
             try
             {
                 GetPrinterStatus();
@@ -823,6 +935,8 @@ namespace Serial_To_QR_Code
                 }
                 else
                 {
+                    PrinterNotFoundTicks = 0;
+
                     // -----------------------------------------------------
                     // Convert buffer
                     // -----------------------------------------------------
@@ -875,6 +989,12 @@ namespace Serial_To_QR_Code
             }
             else
             {
+                PrinterNotFoundTicks++;
+                if (60 < PrinterNotFoundTicks)
+                {
+                    MessageBox.Show("The application cannot longer wait printer connection. The application will exit.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Application.ExitThread();
+                }
                 error_Flag.PrinterNotFound = warning_Flag.PrinterNotFound = true;
                 error_Flag.Flag = warning_Flag.Flag = true;
                 PostPrinterName("-");
@@ -934,18 +1054,22 @@ namespace Serial_To_QR_Code
 
         public void Extract(String e)
         {
-            string[] astr = e.Split(':');
-            string data = astr[1].TrimStart();
-            Flag = data[0] == '1';
-            Nibbles16_9 = data.Substring(2, 8);
-            Nibble8 = int.Parse(data[11].ToString());
-            Nibble7 = int.Parse(data[12].ToString());
-            Nibble6 = int.Parse(data[13].ToString());
-            Nibble5 = int.Parse(data[14].ToString());
-            Nibble4 = int.Parse(data[15].ToString());
-            Nibble3 = int.Parse(data[16].ToString());
-            Nibble2 = int.Parse(data[17].ToString());
-            Nibble1 = int.Parse(data[18].ToString());
+            try
+            {
+                string[] astr = e.Split(':');
+                string data = astr[1].TrimStart();
+                Flag = data[0] == '1';
+                Nibbles16_9 = data.Substring(2, 8);
+                Nibble8 = int.Parse(data[11].ToString());
+                Nibble7 = int.Parse(data[12].ToString());
+                Nibble6 = int.Parse(data[13].ToString());
+                Nibble5 = int.Parse(data[14].ToString());
+                Nibble4 = int.Parse(data[15].ToString());
+                Nibble3 = int.Parse(data[16].ToString());
+                Nibble2 = int.Parse(data[17].ToString());
+                Nibble1 = int.Parse(data[18].ToString());
+            }
+            catch { }
         }
     }
 
@@ -970,18 +1094,22 @@ namespace Serial_To_QR_Code
 
         public void Extract(String e)
         {
-            string[] astr = e.Split(':');
-            string data = astr[1].TrimStart();
-            Flag = data[0] == '1';
-            Nibbles16_9 = data.Substring(2, 8);
-            Nibble8 = int.Parse(data[11].ToString());
-            Nibble7 = int.Parse(data[12].ToString());
-            Nibble6 = int.Parse(data[13].ToString());
-            Nibble5 = int.Parse(data[14].ToString());
-            Nibble4 = int.Parse(data[15].ToString());
-            Nibble3 = int.Parse(data[16].ToString());
-            Nibble2 = int.Parse(data[17].ToString());
-            Nibble1 = int.Parse(data[18].ToString());
+            try
+            {
+                string[] astr = e.Split(':');
+                string data = astr[1].TrimStart();
+                Flag = data[0] == '1';
+                Nibbles16_9 = data.Substring(2, 8);
+                Nibble8 = int.Parse(data[11].ToString());
+                Nibble7 = int.Parse(data[12].ToString());
+                Nibble6 = int.Parse(data[13].ToString());
+                Nibble5 = int.Parse(data[14].ToString());
+                Nibble4 = int.Parse(data[15].ToString());
+                Nibble3 = int.Parse(data[16].ToString());
+                Nibble2 = int.Parse(data[17].ToString());
+                Nibble1 = int.Parse(data[18].ToString());
+            }
+            catch { }
         }
     }
 

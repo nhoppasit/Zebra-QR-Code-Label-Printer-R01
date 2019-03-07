@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pictureBoxQRCode = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -59,11 +60,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.chkSerialOpenFailed = new System.Windows.Forms.CheckBox();
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.txtTop = new System.Windows.Forms.TextBox();
             this.txtLeft = new System.Windows.Forms.TextBox();
-            this.chkSerialSending = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -84,6 +85,10 @@
             this.chkSerialNotFound = new System.Windows.Forms.CheckBox();
             this.chkSerialReady = new System.Windows.Forms.CheckBox();
             this.cboPorts = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRCode)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -109,7 +114,7 @@
             this.pictureBoxQRCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxQRCode.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxQRCode.Name = "pictureBoxQRCode";
-            this.pictureBoxQRCode.Size = new System.Drawing.Size(930, 525);
+            this.pictureBoxQRCode.Size = new System.Drawing.Size(741, 600);
             this.pictureBoxQRCode.TabIndex = 14;
             this.pictureBoxQRCode.TabStop = false;
             // 
@@ -117,7 +122,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 727);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 828);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1237, 24);
             this.statusStrip1.TabIndex = 16;
@@ -141,13 +146,13 @@
             this.txtBoxQRCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtBoxQRCode.Location = new System.Drawing.Point(10, 291);
             this.txtBoxQRCode.Name = "txtBoxQRCode";
-            this.txtBoxQRCode.Size = new System.Drawing.Size(270, 31);
+            this.txtBoxQRCode.Size = new System.Drawing.Size(459, 31);
             this.txtBoxQRCode.TabIndex = 4;
             // 
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnPrint.Location = new System.Drawing.Point(152, 328);
+            this.btnPrint.Location = new System.Drawing.Point(151, 378);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(138, 37);
             this.btnPrint.TabIndex = 5;
@@ -302,7 +307,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(605, 101);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(605, 127);
             this.flowLayoutPanel1.TabIndex = 29;
             // 
             // chkInvalid_Firmware_Config
@@ -458,7 +463,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(613, 101);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(613, 127);
             this.flowLayoutPanel2.TabIndex = 30;
             // 
             // chkReplace_Printhead
@@ -531,7 +536,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(1230, 105);
+            this.splitContainer1.Size = new System.Drawing.Size(1230, 131);
             this.splitContainer1.SplitterDistance = 609;
             this.splitContainer1.TabIndex = 31;
             // 
@@ -554,8 +559,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1237, 727);
-            this.splitContainer2.SplitterDistance = 194;
+            this.splitContainer2.Size = new System.Drawing.Size(1237, 828);
+            this.splitContainer2.SplitterDistance = 220;
             this.splitContainer2.TabIndex = 28;
             // 
             // splitContainer3
@@ -567,11 +572,15 @@
             // 
             // splitContainer3.Panel1
             // 
+            this.splitContainer3.Panel1.Controls.Add(this.textBox2);
+            this.splitContainer3.Panel1.Controls.Add(this.label13);
+            this.splitContainer3.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer3.Panel1.Controls.Add(this.label12);
+            this.splitContainer3.Panel1.Controls.Add(this.chkSerialOpenFailed);
             this.splitContainer3.Panel1.Controls.Add(this.txtHeight);
             this.splitContainer3.Panel1.Controls.Add(this.txtWidth);
             this.splitContainer3.Panel1.Controls.Add(this.txtTop);
             this.splitContainer3.Panel1.Controls.Add(this.txtLeft);
-            this.splitContainer3.Panel1.Controls.Add(this.chkSerialSending);
             this.splitContainer3.Panel1.Controls.Add(this.label10);
             this.splitContainer3.Panel1.Controls.Add(this.label11);
             this.splitContainer3.Panel1.Controls.Add(this.label9);
@@ -598,14 +607,32 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pictureBoxQRCode);
-            this.splitContainer3.Size = new System.Drawing.Size(1237, 529);
-            this.splitContainer3.SplitterDistance = 299;
+            this.splitContainer3.Size = new System.Drawing.Size(1237, 604);
+            this.splitContainer3.SplitterDistance = 488;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // chkSerialOpenFailed
+            // 
+            this.chkSerialOpenFailed.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkSerialOpenFailed.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.chkSerialOpenFailed.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.chkSerialOpenFailed.FlatAppearance.BorderSize = 2;
+            this.chkSerialOpenFailed.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
+            this.chkSerialOpenFailed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSerialOpenFailed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkSerialOpenFailed.Location = new System.Drawing.Point(154, 129);
+            this.chkSerialOpenFailed.Name = "chkSerialOpenFailed";
+            this.chkSerialOpenFailed.Size = new System.Drawing.Size(138, 37);
+            this.chkSerialOpenFailed.TabIndex = 53;
+            this.chkSerialOpenFailed.Text = "OPEN FAULT";
+            this.chkSerialOpenFailed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkSerialOpenFailed.UseCompatibleTextRendering = true;
+            this.chkSerialOpenFailed.UseVisualStyleBackColor = false;
             // 
             // txtHeight
             // 
             this.txtHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHeight.Location = new System.Drawing.Point(154, 482);
+            this.txtHeight.Location = new System.Drawing.Point(153, 532);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(78, 31);
             this.txtHeight.TabIndex = 52;
@@ -613,7 +640,7 @@
             // txtWidth
             // 
             this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtWidth.Location = new System.Drawing.Point(154, 445);
+            this.txtWidth.Location = new System.Drawing.Point(153, 495);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(78, 31);
             this.txtWidth.TabIndex = 51;
@@ -621,7 +648,7 @@
             // txtTop
             // 
             this.txtTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTop.Location = new System.Drawing.Point(154, 408);
+            this.txtTop.Location = new System.Drawing.Point(153, 458);
             this.txtTop.Name = "txtTop";
             this.txtTop.Size = new System.Drawing.Size(78, 31);
             this.txtTop.TabIndex = 50;
@@ -629,34 +656,16 @@
             // txtLeft
             // 
             this.txtLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtLeft.Location = new System.Drawing.Point(154, 371);
+            this.txtLeft.Location = new System.Drawing.Point(153, 421);
             this.txtLeft.Name = "txtLeft";
             this.txtLeft.Size = new System.Drawing.Size(78, 31);
             this.txtLeft.TabIndex = 49;
-            // 
-            // chkSerialSending
-            // 
-            this.chkSerialSending.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkSerialSending.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.chkSerialSending.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.chkSerialSending.FlatAppearance.BorderSize = 2;
-            this.chkSerialSending.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
-            this.chkSerialSending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkSerialSending.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkSerialSending.Location = new System.Drawing.Point(154, 215);
-            this.chkSerialSending.Name = "chkSerialSending";
-            this.chkSerialSending.Size = new System.Drawing.Size(138, 37);
-            this.chkSerialSending.TabIndex = 9;
-            this.chkSerialSending.Text = "SENDING";
-            this.chkSerialSending.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkSerialSending.UseCompatibleTextRendering = true;
-            this.chkSerialSending.UseVisualStyleBackColor = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label10.Location = new System.Drawing.Point(238, 494);
+            this.label10.Location = new System.Drawing.Point(237, 544);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(25, 13);
             this.label10.TabIndex = 48;
@@ -666,7 +675,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label11.Location = new System.Drawing.Point(238, 457);
+            this.label11.Location = new System.Drawing.Point(237, 507);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(25, 13);
             this.label11.TabIndex = 47;
@@ -676,7 +685,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label9.Location = new System.Drawing.Point(238, 420);
+            this.label9.Location = new System.Drawing.Point(237, 470);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(25, 13);
             this.label9.TabIndex = 46;
@@ -686,7 +695,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label8.Location = new System.Drawing.Point(238, 379);
+            this.label8.Location = new System.Drawing.Point(237, 429);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 45;
@@ -716,7 +725,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label6.Location = new System.Drawing.Point(90, 494);
+            this.label6.Location = new System.Drawing.Point(89, 544);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 42;
@@ -726,7 +735,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label7.Location = new System.Drawing.Point(95, 457);
+            this.label7.Location = new System.Drawing.Point(94, 507);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 40;
@@ -736,7 +745,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(112, 420);
+            this.label5.Location = new System.Drawing.Point(111, 470);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 38;
@@ -746,7 +755,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.Location = new System.Drawing.Point(107, 379);
+            this.label4.Location = new System.Drawing.Point(106, 429);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 36;
@@ -771,7 +780,7 @@
             this.chkQrCodePrinted.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
             this.chkQrCodePrinted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkQrCodePrinted.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkQrCodePrinted.Location = new System.Drawing.Point(10, 328);
+            this.chkQrCodePrinted.Location = new System.Drawing.Point(9, 378);
             this.chkQrCodePrinted.Name = "chkQrCodePrinted";
             this.chkQrCodePrinted.Size = new System.Drawing.Size(138, 37);
             this.chkQrCodePrinted.TabIndex = 33;
@@ -810,7 +819,7 @@
             this.chkSerialReadFault.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
             this.chkSerialReadFault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSerialReadFault.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkSerialReadFault.Location = new System.Drawing.Point(10, 215);
+            this.chkSerialReadFault.Location = new System.Drawing.Point(10, 172);
             this.chkSerialReadFault.Name = "chkSerialReadFault";
             this.chkSerialReadFault.Size = new System.Drawing.Size(138, 37);
             this.chkSerialReadFault.TabIndex = 8;
@@ -828,7 +837,7 @@
             this.chkPrinterStatus.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
             this.chkPrinterStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkPrinterStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkPrinterStatus.Location = new System.Drawing.Point(154, 172);
+            this.chkPrinterStatus.Location = new System.Drawing.Point(298, 172);
             this.chkPrinterStatus.Name = "chkPrinterStatus";
             this.chkPrinterStatus.Size = new System.Drawing.Size(138, 37);
             this.chkPrinterStatus.TabIndex = 7;
@@ -846,7 +855,7 @@
             this.chkQrCode.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
             this.chkQrCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkQrCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkQrCode.Location = new System.Drawing.Point(10, 172);
+            this.chkQrCode.Location = new System.Drawing.Point(154, 172);
             this.chkQrCode.Name = "chkQrCode";
             this.chkQrCode.Size = new System.Drawing.Size(138, 37);
             this.chkQrCode.TabIndex = 6;
@@ -882,7 +891,7 @@
             this.chkSerialReady.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lime;
             this.chkSerialReady.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSerialReady.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkSerialReady.Location = new System.Drawing.Point(154, 129);
+            this.chkSerialReady.Location = new System.Drawing.Point(298, 129);
             this.chkSerialReady.Name = "chkSerialReady";
             this.chkSerialReady.Size = new System.Drawing.Size(138, 37);
             this.chkSerialReady.TabIndex = 5;
@@ -900,14 +909,55 @@
             this.cboPorts.Size = new System.Drawing.Size(138, 28);
             this.cboPorts.TabIndex = 0;
             // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.textBox1.Location = new System.Drawing.Point(10, 241);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(459, 31);
+            this.textBox1.TabIndex = 54;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label12.Location = new System.Drawing.Point(11, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.TabIndex = 55;
+            this.label12.Text = "TOP TEXT:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.textBox2.Location = new System.Drawing.Point(9, 341);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(459, 31);
+            this.textBox2.TabIndex = 56;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label13.Location = new System.Drawing.Point(10, 325);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 13);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "BOTTOM TEXT:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 751);
+            this.ClientSize = new System.Drawing.Size(1237, 852);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.statusStrip1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Serial To QR Code";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQRCode)).EndInit();
@@ -986,11 +1036,15 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chkSerialSending;
         private System.Windows.Forms.TextBox txtHeight;
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.TextBox txtTop;
         private System.Windows.Forms.TextBox txtLeft;
+        private System.Windows.Forms.CheckBox chkSerialOpenFailed;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label12;
     }
 }
 

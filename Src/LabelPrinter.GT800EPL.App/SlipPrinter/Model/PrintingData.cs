@@ -19,6 +19,8 @@ namespace SlipPrinter.Model
     public class QrCodeModel
     {
         public string QrCode { get; set; }
+        public string TopText { get; set; }
+        public string BottomText { get; set; }
         public float Left { get; set; }
         public float Top { get; set; }
         public float Width { get; set; }

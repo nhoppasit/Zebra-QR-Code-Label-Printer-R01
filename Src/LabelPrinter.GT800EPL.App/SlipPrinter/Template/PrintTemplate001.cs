@@ -20,7 +20,9 @@ namespace SlipPrinter.Template
             var logoLeftMargin = Data.Left;
             var logoTopMargin = Data.Top;
 
+            g.DrawString(Data.TopText, null, Brushes.Black, logoLeftMargin, logoTopMargin);
             g.DrawImage(Bitmap.FromFile(string.Format(@"C:\QR\{0}.jpg", Data.QrCode)), logoLeftMargin, logoTopMargin, logoWidth, logoHeight);
+            g.DrawString(Data.TopText, null, Brushes.Black, logoLeftMargin, logoTopMargin + logoHeight);
 
         }
     }
